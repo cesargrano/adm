@@ -1,0 +1,45 @@
+<nav class="navbar navbar-inverse navbar-fixed-top topnav" role="navigation"  ng-controller="MenuCtrl as menu">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" ng-click="menu.isNavCollapsed = !menu.isNavCollapsed">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand">Administrador de App/Domínios</a>
+    </div>
+    <div class="collapse navbar-collapse" uib-collapse="menu.isNavCollapsed">
+        <!--<ul class="nav navbar-nav">
+            <li ng-repeat="item in menu.itens" ng-class="{'dropdown':item.SUB_MENU}" uib-dropdown keyboard-nav>
+                <a ui-sref="{{item.MNEMONICO == '' ? '/' : item.MNEMONICO }}"
+                   ng-class="{'dropdown-toggle': item.SUB_MENU}"
+                   uib-dropdown-toggle>
+                    <i class="fa" ng-class="item.ICON"></i>&nbsp; {{item.DESCRIPTION}} <span ng-if="item.SUB_MENU" class="caret"></span></a>
+                <ul ng-if="item.SUB_MENU" class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="simple-btn-keyboard-nav">
+                    <li ng-repeat="sub in item.SUB_MENU.data" ng-attr-role="{{sub.DESCRIPTION == 'SEPARADOR' ? 'separator' : 'menuitem'}}" ng-class="{'divider': sub.DESCRIPTION == 'SEPARADOR'}">
+                        <a ng-if="sub.DESCRIPTION != 'SEPARADOR'" ui-sref="{{sub.MNEMONICO == '' ? '/' : sub.MNEMONICO }}">
+                            <i class="fa" ng-class="sub.ICON"></i>&nbsp; {{sub.DESCRIPTION}}
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>-->
+        <ul class="nav navbar-nav navbar-right">
+	        <li class="dropdown" uib-dropdown keyboard-nav>
+                <a uib-dropdown-toggle>
+                    <i class="fa fa-user"></i> &nbsp;
+	                <span>{{currentUser}}</span>
+	                <i class="caret"></i>
+                </a>
+		        <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="simple-btn-keyboard-nav">
+			        <li>
+				        <a ng-click="logout(); exitFullScreen()">
+					        <i class="fa fa-power-off"></i> &nbsp;
+					        <span>Sair</span>
+				        </a>
+			        </li>
+		        </ul>
+            </li>
+        </ul>
+    </div>
+</nav>

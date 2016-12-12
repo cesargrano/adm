@@ -1,0 +1,39 @@
+@import "vars";
+@import "mixins";
+.grid {
+	//    width: 1200px;
+	//    height: 500px;
+	
+	.ui-grid-header-cell-row {
+		display: table-header-group;
+	}
+	
+	.ui-grid-viewport {
+		overflow: auto;
+		
+		.ui-grid-canvas {
+			width: 100%;
+		}
+	}
+	.form-group {
+		position: relative;
+		.form-control-feedback {
+			top: 25px!important;
+		}
+	}
+}
+.addUser {
+	.border-radius(100%);
+	position: absolute;
+	z-index: 5;
+	padding: 10px 12px;
+	display: block;
+	background: rgba(0,0,0,0);
+	.transition(all 0.3s ease);
+}
+.addUser:hover{
+	.transition(all 0.3s ease);
+	background: rgba(0,0,0,0.7);
+	color:@negative;
+	.transform(scale(1.4) rotate(360deg));
+}

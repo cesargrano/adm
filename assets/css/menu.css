@@ -1,0 +1,92 @@
+/* The side navigation menu */
+.sidenav {
+  height: 100%;
+  /* 100% Full-height */
+  min-width: 50px;
+  position: absolute;
+  /* Stay in place */
+  z-index: 5;
+  /* Stay on top */
+  top: 0;
+  left: 0;
+  padding: 0;
+  background-color: #333333;
+  /* Black*/
+  overflow: hidden;
+  /* Disable horizontal scroll */
+  margin-top: 51px;
+  /* Place content 60px from the top */
+}
+.sidenav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  min-width: 300px;
+  /* The navigation menu links */
+  /* When you mouse over the navigation links, change their color */
+  /* Position and style the close button (top right corner) */
+}
+.sidenav ul .item,
+.sidenav ul .sub-item {
+  padding: 8px 15px;
+  cursor: pointer;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+}
+.sidenav ul .item .desc,
+.sidenav ul .sub-item .desc {
+  margin-left: 10px;
+  cursor: pointer;
+}
+.sidenav ul .divider {
+  border-bottom: 2px groove #444444;
+}
+.sidenav ul .sub-item:hover,
+.sidenav ul .sub-item:active,
+.sidenav ul .sub-item:focus,
+.sidenav ul .item:hover,
+.sidenav ul .item:active,
+.sidenav ul .item:focus {
+  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  background: #666666;
+}
+.sidenav ul a {
+  text-decoration: none;
+  font-size: 1.2em;
+  color: #ffffff;
+  display: block;
+}
+.sidenav ul a:hover,
+.sidenav ul .offcanvas a:focus {
+  color: #ffffff;
+}
+.sidenav ul .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+.sidenav .fa {
+  font-size: 1.2em;
+}
+.sidenav.horizontal-collapse.collapse {
+  display: block;
+}
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
+}

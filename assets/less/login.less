@@ -1,0 +1,85 @@
+@import "vars";
+@import "mixins";
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+.login-page {
+    width: 360px;
+    padding: 8% 0 0;
+    margin: auto;
+    
+    .login-logo {
+        width: 150px;
+        height: 150px;
+        background-color: grey;
+        .border-radius(100%);
+        .drop-shadow(0, 2px, 3px, 0, 0.15);
+        border: 1px solid rgba(0,0,0,0);
+        display: block;
+        margin: auto;
+        margin-bottom: -30px;
+        background-image: url(../img/SedeHostingLogo_450x280.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: relative;
+    }
+    .alert {
+        overflow: auto;
+    }
+}
+.login-form {
+    background: @negative;
+    max-width: 360px;
+    margin: 0 auto 100px;
+    padding: 45px;
+    text-align: center;
+    .drop-shadow(0, 2px, 7px, 1px);
+    .border-radius();
+    //box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    input {
+        .drop-shadow(0, 0, 0, 0, 0);
+        .border-radius(0px);
+        font-family: "Roboto", sans-serif;
+        outline: 0;
+        background: #f2f2f2;
+        width: 100%;
+        border: 0;
+        margin: 0 0 15px;
+        padding: 25px 15px;
+        box-sizing: border-box;
+        font-size: 14px;
+        display: block;
+    }
+    input[type=submit] {
+        text-transform: uppercase;
+        background: @base;
+        color: #FFFFFF;
+        cursor: pointer;
+        line-height: 0;
+        .transition(all 0.5s ease);
+    }
+    input[type=submit]:hover,
+    input[type=submit]:active,
+    input[type=submit]:focus {
+        .drop-shadow();
+        .transition(all 0.5s ease);
+        .scale(1.03);
+        background: @second;
+    }
+    .form-control-feedback {
+        top: 6px;
+    }
+    /*.help-block {
+        margin-top: -15px;
+        margin-bottom: 0;
+    }*/
+    .message {
+        margin: 15px 0 0;
+        color: #b3b3b3;
+        font-size: 12px;
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+    }
+    .register-form {
+    }
+}

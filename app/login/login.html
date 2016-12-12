@@ -1,0 +1,21 @@
+<div class="login-page" ng-controller="LoginCtrl as login">
+    <div class="login-logo"></div>
+    <div class="login-form">
+        <!--<form name="login.loginForm" class="login-form" method="GET" ng-submit="login.submit(); enterFullScreen()" novalidate>
+            <input type="text" placeholder="username" ng-model="login.credentials.user" />
+            <input type="password" placeholder="password" ng-model="login.credentials.password" />
+            <input type="submit" value="Login">
+        </form>-->
+        <div class="alert alert-danger" role="alert" ng-if="login.errorMsg">Erro: <strong>{{login.errorMsg.status}}</strong><br>{{login.errorMsg.data}}</div>
+        <form sf-schema="login.schema"
+			sf-form="login.form"
+            sf-model="login.credentials"
+            name="login.loginForm"
+            class="form"
+            method="GET"
+            ng-submit="login.submit();"
+            novalidate>
+        </form>
+<!--        <a href="#" ng-click="logout()">Logout</a>-->
+    </div>
+</div>

@@ -1,0 +1,92 @@
+<html ng-app="adm" ng-controller="MainCtrl as main">
+<head>
+	<meta charset="utf-8" />
+	<title>{{$state.current.data.title}} | Adm</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="Expires" content="0"> 
+	
+	<!-- ================== BEGIN BASE CSS STYLE ================== -->
+ 	<link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
+	<link href="bower_components/components-font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+	<link href="bower_components/angular-ui-grid/ui-grid.css" rel="stylesheet" type="text/css" />
+	<link href="bower_components/angular-ui-notification/dist/angular-ui-notification.min.css" rel="stylesheet" type="text/css" />
+	<link href="bower_components/angular-ui-select/dist/select.min.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/style.css" rel="stylesheet" type="text/css" />
+	<!-- ================== END BASE CSS STYLE ================== -->
+</head>
+
+<body>
+<ng-include ng-if="isAuthenticated()" src="'app/menu/menu.html'"></ng-include>
+<div class="container-fluid">
+	<div class="row">
+		<ng-include ng-if="isAuthenticated()" src="'app/menu/sideNav.html'" class="hidden-xs"></ng-include>
+		<span ng-class="{'backdrop':!main.toggle.status, 'backdrop-off':main.toggle.status}"></span>
+		<div ng-class="{'col-xs-11 col-sm-offset-1':isAuthenticated(), 'col-xs-12':!isAuthenticated()}">
+			<ui-view></ui-view>
+		</div>
+	</div>
+</div>
+<!-- ================== BEGIN BASE JS ================== -->
+<!--[if lt IE 9]>
+<script src="assets/crossbrowserjs/html5shiv.js"></script>
+<script src="assets/crossbrowserjs/respond.min.js"></script>
+<script src="assets/crossbrowserjs/excanvas.min.js"></script>
+<![endif]-->
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="bower_components/angular-animate/angular-animate.min.js"></script>
+<script src="bower_components/angular-touch/angular-touch.min.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="bower_components/angular-ui-mask/dist/mask.js"></script>
+<script src="bower_components/angular-ui-grid/ui-grid.js"></script>
+<script src="bower_components/angular-ui-select/dist/select.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+<script src="bower_components/angular-strap/dist/angular-strap.min.js"></script>
+<script src="bower_components/angular-strap/dist/angular-strap.tpl.min.js"></script>
+<script src="bower_components/tv4/tv4.js"></script>
+<script src="bower_components/moment/moment.js"></script>
+<script src="bower_components/ace-builds/src-min-noconflict/ace.js"></script>
+<script src="bower_components/angular-ui-ace/ui-ace.min.js"></script>
+<script src="bower_components/objectpath/lib/ObjectPath.js"></script>
+<script src="bower_components/angular-schema-form/dist/schema-form.js"></script>
+<script src="bower_components/angular-schema-form-bootstrap/bootstrap-decorator.js"></script>
+<script src="bower_components/angular-ui-notification/dist/angular-ui-notification.js"></script>
+<script src="bower_components/angular-aria/angular-aria.js"></script>
+<script src="bower_components/angular-schema-form-ui-select/ui-sortable.js"></script>
+<script src="bower_components/angular-schema-form-ui-select/bootstrap-ui-select.js"></script>
+<script src="bower_components/angular-schema-form-dynamic-select/angular-schema-form-dynamic-select.js"></script>
+<script src="bower_components/angular-schema-form-input-masks-master/dist/input-masks.js"></script>
+<script src="bower_components/angular-input-masks/angular-input-masks-standalone.js"></script>
+
+<!-- ================================================= -->
+
+<script src="app/app.module.js"></script>
+<script src="app/app.constant.js"></script>
+<script src="app/app.config.js"></script>
+<script src="app/routes/routes.config.js"></script>
+<script src="app/system/authService.factory.js"></script>
+<script src="app/system/authInterceptor.factory.js"></script>
+<script src="app/system/session.service.js"></script>
+<script src="app/system/main.controller.js"></script>
+
+<script src="app/login/login.controller.js"></script>
+<script src="app/menu/menu.factory.js"></script>
+<script src="app/menu/menu.controller.js"></script>
+<script src="app/menu/toggleNav.directive.js"></script>
+
+<script src="app/dashboard/dashboard.controller.js"></script>
+<script src="app/infra/users.controller.js"></script>
+<script src="app/infra/users.factory.js"></script>
+
+<!-- 
+ -->
+ 
+<!-- ================== END BASE JS ================== -->
+</body>
+</html>

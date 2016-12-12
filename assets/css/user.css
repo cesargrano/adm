@@ -1,0 +1,44 @@
+.grid .ui-grid-header-cell-row {
+  display: table-header-group;
+}
+.grid .ui-grid-viewport {
+  overflow: auto;
+}
+.grid .ui-grid-viewport .ui-grid-canvas {
+  width: 100%;
+}
+.grid .form-group {
+  position: relative;
+}
+.grid .form-group .form-control-feedback {
+  top: 25px!important;
+}
+.addUser {
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  position: absolute;
+  z-index: 5;
+  padding: 10px 12px;
+  display: block;
+  background: rgba(0, 0, 0, 0);
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+}
+.addUser:hover {
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  background: rgba(0, 0, 0, 0.7);
+  color: #ffffff;
+  -webkit-transform: scale(1.4) rotate(360deg);
+  -moz-transform: scale(1.4) rotate(360deg);
+  -ms-transform: scale(1.4) rotate(360deg);
+  -o-transform: scale(1.4) rotate(360deg);
+}

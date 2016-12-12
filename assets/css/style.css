@@ -1,0 +1,341 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+.login-page {
+  width: 360px;
+  padding: 8% 0 0;
+  margin: auto;
+}
+.login-page .login-logo {
+  width: 150px;
+  height: 150px;
+  background-color: grey;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  -webkit-box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0);
+  display: block;
+  margin: auto;
+  margin-bottom: -30px;
+  background-image: url(../img/SedeHostingLogo_450x280.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+}
+.login-page .alert {
+  overflow: auto;
+}
+.login-form {
+  background: #ffffff;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  -webkit-box-shadow: 0 2px 7px 1px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0 2px 7px 1px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 2px 7px 1px rgba(0, 0, 0, 0.25);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  /*.help-block {
+        margin-top: -15px;
+        margin-bottom: 0;
+    }*/
+}
+.login-form input {
+  -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  -moz-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 25px 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+  display: block;
+}
+.login-form input[type=submit] {
+  text-transform: uppercase;
+  background: #333333;
+  color: #FFFFFF;
+  cursor: pointer;
+  line-height: 0;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+}
+.login-form input[type=submit]:hover,
+.login-form input[type=submit]:active,
+.login-form input[type=submit]:focus {
+  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  -webkit-transform: scale(1.03);
+  -moz-transform: scale(1.03);
+  -ms-transform: scale(1.03);
+  -o-transform: scale(1.03);
+  background: #555555;
+}
+.login-form .form-control-feedback {
+  top: 6px;
+}
+.login-form .message {
+  margin: 15px 0 0;
+  color: #b3b3b3;
+  font-size: 12px;
+}
+.login-form .message a {
+  color: #4CAF50;
+  text-decoration: none;
+}
+/* The side navigation menu */
+.sidenav {
+  height: 100%;
+  /* 100% Full-height */
+  min-width: 50px;
+  position: absolute;
+  /* Stay in place */
+  z-index: 5;
+  /* Stay on top */
+  top: 0;
+  left: 0;
+  padding: 0;
+  background-color: #333333;
+  /* Black*/
+  overflow: hidden;
+  /* Disable horizontal scroll */
+  margin-top: 51px;
+  /* Place content 60px from the top */
+}
+.sidenav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  min-width: 300px;
+  /* The navigation menu links */
+  /* When you mouse over the navigation links, change their color */
+  /* Position and style the close button (top right corner) */
+}
+.sidenav ul .item,
+.sidenav ul .sub-item {
+  padding: 8px 15px;
+  cursor: pointer;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+}
+.sidenav ul .item .desc,
+.sidenav ul .sub-item .desc {
+  margin-left: 10px;
+  cursor: pointer;
+}
+.sidenav ul .divider {
+  border-bottom: 2px groove #444444;
+}
+.sidenav ul .sub-item:hover,
+.sidenav ul .sub-item:active,
+.sidenav ul .sub-item:focus,
+.sidenav ul .item:hover,
+.sidenav ul .item:active,
+.sidenav ul .item:focus {
+  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  background: #666666;
+}
+.sidenav ul a {
+  text-decoration: none;
+  font-size: 1.2em;
+  color: #ffffff;
+  display: block;
+}
+.sidenav ul a:hover,
+.sidenav ul .offcanvas a:focus {
+  color: #ffffff;
+}
+.sidenav ul .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+.sidenav .fa {
+  font-size: 1.2em;
+}
+.sidenav.horizontal-collapse.collapse {
+  display: block;
+}
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
+}
+.grid .ui-grid-header-cell-row {
+  display: table-header-group;
+}
+.grid .ui-grid-viewport {
+  overflow: auto;
+}
+.grid .ui-grid-viewport .ui-grid-canvas {
+  width: 100%;
+}
+.grid .form-group {
+  position: relative;
+}
+.grid .form-group .form-control-feedback {
+  top: 25px!important;
+}
+.addUser {
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  position: absolute;
+  z-index: 5;
+  padding: 10px 12px;
+  display: block;
+  background: rgba(0, 0, 0, 0);
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+}
+.addUser:hover {
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  background: rgba(0, 0, 0, 0.7);
+  color: #ffffff;
+  -webkit-transform: scale(1.4) rotate(360deg);
+  -moz-transform: scale(1.4) rotate(360deg);
+  -ms-transform: scale(1.4) rotate(360deg);
+  -o-transform: scale(1.4) rotate(360deg);
+}
+body {
+  background: #fafafa;
+  /* fallback for old browsers */
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.backdrop {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 4;
+  background-color: #000000;
+  -webkit-opacity: 0.7;
+  -moz-opacity: 0.7;
+  opacity: 0.7;
+  -webkit-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  -ms-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+}
+.backdrop-off {
+  -webkit-opacity: 0;
+  -moz-opacity: 0;
+  opacity: 0;
+  -webkit-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  -ms-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+}
+.navbar {
+  border-radius: 0px !important;
+  -moz-border-radius: 0px !important;
+  -webkit-border-radius: 0px !important;
+}
+.container {
+  position: relative;
+  max-width: 300px;
+  margin: 0 auto;
+}
+.container .info {
+  margin: 50px auto;
+  text-align: center;
+}
+.container .info h1 {
+  margin: 0 0 15px;
+  padding: 0;
+  font-size: 36px;
+  font-weight: 300;
+  color: #1a1a1a;
+}
+.container .info span {
+  color: #4d4d4d;
+  font-size: 12px;
+}
+.container .info span a {
+  color: #000000;
+  text-decoration: none;
+}
+ui-view {
+  position: relative;
+  display: block;
+  padding-top: 60px;
+}
+ui-view .form-group {
+  position: relative;
+}
+.container:before,
+.container:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.ui-grid-vcenter {
+  text-align: center;
+  position: relative;
+  top: 60%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.ui-grid-link {
+  cursor: pointer;
+}
+.has-feedback label ~ .form-control-feedback {
+  top: 25px;
+}
+.page-header {
+  margin: 0px 0 10px;
+  font-weight: bold;
+  font-size: 25px;
+}
