@@ -35,6 +35,7 @@
     "angular-schema-form-dynamic-select": "^0.15.0",
     "angular-schema-form-ui-select": "^0.1.1",
     "angular-ui-select": "^0.19.6",
-    "angular-input-masks": "^2.5.0"
+    "angular-input-masks": "^2.5.0",
+    "angular-schema-form-bootstrap": "^0.2.0"
   }
 }

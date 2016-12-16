@@ -83,6 +83,9 @@
 	app.controller('ModalUpdateUserCtrl',function ($uibModalInstance, grid, row, $rootScope, UsersFactory, TRANSACTION_TYPE) {
 		var ctrl = this;
 		ctrl.schema = $rootScope.schema;
+		
+		console.log(ctrl.schema);
+		
 		ctrl.form = $rootScope.schemaForm;
 		ctrl.gridOptions = UsersFactory.gridOptions;
 		ctrl.entity = angular.copy(row.entity);

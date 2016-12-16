@@ -1,0 +1,33 @@
+{
+	"schema": {
+	    "type": "object",
+	    "title": "Login",
+	    "properties": {
+	        "user": {
+	            "type": "string",
+	            "title": "Usuário",
+				"format": "br-phone"
+	        },
+	        "password": {
+	            "type": "string",
+	            "title": "Senha"
+	        }
+	    },
+	    "required": ["user", "password"]
+    },
+	"form": [
+        {
+            "key": "user"
+        },
+        {
+            "key": "password",
+            "type": "password"
+        },        
+        {
+            "type": "submit",
+            "value": "Login",
+    	    "style": "btn-info",
+            "title": "Entrar"
+        }
+    ]
+}

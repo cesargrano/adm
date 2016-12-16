@@ -32,17 +32,37 @@
 	        });
 	    };
 	    
-	    lgn.schema = LoginForm;
 	    lgn.credentials = {};
+	    lgn.schema = {
+    	    "type": "object",
+    	    "title": "Login",
+    	    "properties": {
+    	        "teste": {
+    	            "type": 'string',
+    	            "title": "Teste",
+    				"format": "br-phone"
+    	        },
+    	        "user": {
+    	            "type": 'string',
+    	            "title": "Usuário"
+    	        },
+    	        "password": {
+    	            "type": 'string',
+    	            "title": 'Senha'
+    	        }
+    	    },
+    	    "required": ["user", "password"]
+	    };
 	    lgn.form = [
 	        {
-	            "key": "user",
-	            "title": "Usuário"
+	            "key": "teste"
+	        },
+	        {
+	            "key": "user"
 	        },
 	        {
 	            "key": "password",
-	            "type": "password",
-	            "title": "Senha"
+	            "type": "password"
 	        },        
 	        {
 	            "type": "submit",
@@ -69,12 +89,13 @@
 	    title: 'Login',
 	    properties: {
 	        user: {
-	            type: 'string',
-	            title: 'User'
+	            "type": 'string',
+	            "title": 'User',
+				"format": "br-phone"
 	        },
 	        password: {
-	            type: 'string',
-	            title: 'Password'
+	            "type": 'string',
+	            "title": 'Password'
 	        }
 	    },
 	    required: [

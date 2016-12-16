@@ -31,7 +31,7 @@
 	    		"pattern": "^\\S+@\\S+$"
 	    	}, 
 	    	"MOBILE": {
-	    		"title": "Celular 2", 
+	    		"title": "Celular", 
 	    		"type": "string",
 				"format": "br-phone"
 	    	}, 
