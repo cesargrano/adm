@@ -1,7 +1,7 @@
 (function() {
 	'use strict';
 	
-	app.controller('LoginCtrl', function ($scope, $rootScope, $state, $window, AuthService, LoginForm) {
+	app.controller('LoginCtrl', function ($scope, $rootScope, $state, $window, AuthService) {
 	    var lgn = this;
 	    lgn.credentials = {};
 	    lgn.loginForm = {};
