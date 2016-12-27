@@ -49,9 +49,7 @@
 		            title: 'Tipos de Emails',
 		            entity: 'Infra',
 		            table: 'EmailType',
-		            schemaForm: 'app/infra/schema-form/emailType.json',
-		            master: 'GroupUsers',
-		            detail: 'Users'
+		            schemaForm: 'app/infra/schema-form/emailType.json'
 		        }
 		    });
 	    /*$locationProvider.html5Mode({

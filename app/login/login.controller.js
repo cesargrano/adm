@@ -1,46 +1,49 @@
 (function() {
 	'use strict';
 	
-	app.controller('LoginCtrl', function ($scope, $rootScope, $state, $window, AuthService) {
-	    var lgn = this;
-	    lgn.credentials = {};
-	    lgn.loginForm = {};
-	    lgn.error = false;
+	app.controller('LoginCtrl', function ($scope, $rootScope, $state, $window, $sce, AuthService) {
+	    var login = this;
+	    login.credentials = {};
+	    login.loginForm = {};
+	    login.error = false;
 	    
+	    
+	    //login.inputCPF = 'Cesar';
+	    login.inputCPF = $sce.trustAsHtml('<input type="text" ng-model="cpf" ui-br-cpf-mask>');
 	    
 	    //when the form is submitted
-	    lgn.submit = function () {
-	        lgn.submitted = true;
-	        if (lgn.loginForm.$valid) {
-	            lgn.login(lgn.credentials);
+	    login.submit = function () {
+	        login.submitted = true;
+	        if (login.loginForm.$valid) {
+	            login.login(login.credentials);
 	        } else {
-	            lgn.error = true;
+	            login.error = true;
 	            return;
 	        }
 	    };
 	
 	    //Performs the login function, by sending a request to the server with the Auth service
-	    lgn.login = function (credentials) {
-	        lgn.error = false;
+	    login.login = function (credentials) {
+	        login.error = false;
 	        AuthService.login(credentials, function(user) {
 	            //success function
 	            $state.go('dashboard');
 	        }, function (err) {
 	            console.log("error: " + JSON.stringify(err));
-	            lgn.error = true;
-	            lgn.errorMsg = err;
+	            login.error = true;
+	            login.errorMsg = err;
 	        });
 	    };
 	    
-	    lgn.credentials = {};
-	    lgn.schema = {
+	    login.credentials = {};
+	    login.schema = {
     	    "type": "object",
     	    "title": "Login",
     	    "properties": {
     	        "teste": {
     	            "type": 'string',
     	            "title": "Teste",
-    				"format": "br-phone"
+    				"format": "cpf"
     	        },
     	        "user": {
     	            "type": 'string',
@@ -53,7 +56,7 @@
     	    },
     	    "required": ["user", "password"]
 	    };
-	    lgn.form = [
+	    login.form = [
 	        {
 	            "key": "teste"
 	        },
@@ -81,7 +84,7 @@
 	            user: credentials.user,
 	            password: credentials.password
 	        };
-	        lgn.login(credentials);
+	        login.login(credentials);
 	    }
 	});
 	app.constant('LoginForm', {

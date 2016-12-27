@@ -1,16 +1,27 @@
 <div>
     <div class="modal-header">
-        <h3 class="modal-title">Editar {{ctrl.schema.title}}</h3>
+<!--     	<button type="button" class="close" ng-click="$close()">x</button>
+ -->        
+ 		<h3 class="modal-title">Editar {{ctrl.schema.title}}</h3>
     </div>
     <div class="modal-body">
-        <form sf-schema="ctrl.schema" 
-        	sf-form="ctrl.form" 
-        	sf-model="ctrl.entity" 
-        	method="post">
-        </form>
+	<uib-tabset>
+		<uib-tab index="0" heading="Informações">
+	        <form name="ctrl.validForm" 
+	        	sf-schema="ctrl.schema" 
+	        	sf-form="ctrl.form" 
+	        	sf-model="ctrl.entity" 
+	        	method="post">
+	        </form>
+		</uib-tab>
+		<uib-tab index="1" heading="E-mail">
+			<input type="text" ng-model="phonenumber" ui-mask="(99) 9?9999-9999"  ui-mask-placeholder ui-mask-placeholder-char="space"/>
+			<input type="text" name="field" ng-model="phoneNumber" ui-br-phone-number>
+		</uib-tab>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-success" ng-click="ctrl.update(grid, row)">Gravar</button>
+        <button class="btn btn-success" ng-click="ctrl.create()" ng-disable="ctrl.validForm.$valid" ng-show="ctrl.DisplayCreate">Criar</button>
+        <button class="btn btn-success" ng-click="ctrl.update(grid, row)" ng-disable="ctrl.validForm.$valid" ng-show="ctrl.DisplayCreate">Gravar</button>
         <button class="btn btn-warning" ng-click="$close()">Cancelar</button>
     </div>
 </div>

@@ -1,5 +1,5 @@
 app.constant('APP_DATA', {
-    serverPath: 'http://192.168.1.14:8080/SedeWS/rest/result/',
+    serverPath: 'http://192.168.1.14:8081/SedeWS/rest/result/',
     //serverPath: 'http://209.54.57.124/SedeWS/rest/result/',
     prefix: 10000,
     appName: 'adm'

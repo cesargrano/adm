@@ -12,11 +12,11 @@
 	
 		ctrl.gridOptions = UsersFactory.gridOptions;
 	
-		$http.get($state.current.data.schemaForm).success(function(data) {
-			$rootScope.schema = data.schema;
-			$rootScope.schemaForm = data.form;
-			ctrl.gridOptions.columnDefs = data.columnDefs;
-		});
+//		$http.get($state.current.data.schemaForm).success(function(data) {
+//			$rootScope.schema = data.schema;
+//			$rootScope.schemaForm = data.form;
+//			ctrl.gridOptions.columnDefs = data.columnDefs;
+//		});
 		
 		ctrl.title = $state.current.data.title;
 		ctrl.create = UsersFactory.create;
@@ -43,14 +43,15 @@
 			var trt = TRANSACTION_TYPE.read;
 			UsersFactory.transaction(null, 'GET', 'table', trt, function(result){
 				//Success();
-				//console.log(result.data.form);
+//				console.log(result.data.schema);
+//				console.log(result.data.form);
 				
-	//			ctrl.gridOptions.columnDefs = result.data.columnDefs;
+				ctrl.gridOptions.columnDefs = result.data.columnDefs;
 				ctrl.gridOptions.data = result.data.data;
 				//console.log(ctrl.gridOptions.onRegisterApi($scope.gridApi));
 				//ctrl.height = (ctrl.gridOptions.data.length + 3.05) * 30;
-	//			$rootScope.schema = result.data.schema;
-	//			$rootScope.schemaForm = result.data.form;
+				$rootScope.schema = result.data.schema;
+				$rootScope.schemaForm = result.data.form;
 			}, function(err){
 				//do something if Error();
 				console.log(err);
@@ -62,6 +63,10 @@
 	
 	app.controller('ModalCreateUserCtrl',function ($uibModalInstance, $rootScope, UsersFactory, TRANSACTION_TYPE) {
 		var ctrl = this;
+		
+		ctrl.DisplayCreate = true;
+		ctrl.DisplayUpdate = false;
+
 		ctrl.schema = $rootScope.schema;
 		ctrl.form = $rootScope.schemaForm;
 		ctrl.gridOptions = UsersFactory.gridOptions;
@@ -79,14 +84,19 @@
 			});
 			$uibModalInstance.close();
 		};
+		
 	});
 	app.controller('ModalUpdateUserCtrl',function ($uibModalInstance, grid, row, $rootScope, UsersFactory, TRANSACTION_TYPE) {
 		var ctrl = this;
 		ctrl.schema = $rootScope.schema;
-		
-		console.log(ctrl.schema);
-		
 		ctrl.form = $rootScope.schemaForm;
+		
+		ctrl.DisplayCreate = false;
+		ctrl.DisplayUpdate = true;
+
+		console.log(ctrl.schema);
+		console.log(ctrl.form);
+		
 		ctrl.gridOptions = UsersFactory.gridOptions;
 		ctrl.entity = angular.copy(row.entity);
 		ctrl.groupUserOnChange = UsersFactory.groupUserOnChange; //(ctrl.entity, ctrl.modelValue, ctrl.form);
