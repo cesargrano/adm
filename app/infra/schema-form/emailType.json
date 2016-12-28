@@ -4,25 +4,22 @@
 		"title": "Tipos de Email",
 		"required": ["EMAIL_TYPE", "LIMITED"],
 		"properties" : {
-				"EMAIL_TYPE" : {
-					"title": "Tipo",
-					"type": "string"
-				},
-				"LIMITED": {
-					"title": "Limitado",
-					"type": "boolean",
-					"default": false
-				}
+			"EMAIL_TYPE" : {
+				"title": "Tipo 2",
+				"type": "string",
+				"format": "br-phone"
+			},
+			"LIMITED": {
+				"title": "Limitado",
+				"type": "boolean",
+				"default": false
+			}
 		}
 	},
 	"form": [
 		{
 			"key": "EMAIL_TYPE",
-			"type": "text",
-			"grid": {
-				"flex": 100,
-				"layout": "row"
-			}
+			"type": "text"
 		},
 		{
 			"key": "LIMITED",

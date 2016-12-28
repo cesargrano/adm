@@ -1,6 +1,7 @@
 var app = angular.module('adm',[ 'ui.router',
                                 'ngCookies',
                                 'ngAnimate',
+                                'ngSanitize',
                                 'ui.mask',
                                 'ui.bootstrap',
                                 'ui.grid',
@@ -9,7 +10,7 @@ var app = angular.module('adm',[ 'ui.router',
                                 'ui.grid.autoResize',
                                 'ui-notification',
                                 'ui.select',
-                                'ui.ace',
                                 'ui.utils.masks',
-                                'schemaForm',
-                                'ngSanitize']);
+                                'angularSchemaFormUiMask',
+                                'schemaForm'])
+                                .filter('to_html', function($sce) { return $sce.trustAsHtml; });

@@ -77,10 +77,6 @@
 		//var columnSize = width[0]/usersFactory.gridOptions.columnDefs.length;
 		
 		usersFactory.groupUserOnChange = function(modelValue, form, model, field) {
-			
-			
-			console.log("modelValue: " + modelValue);
-			
 			var titleMap = form.titleMap
 			for (var i = 0; i < titleMap.length; i++) {
 				if (titleMap[i].value == modelValue) {
