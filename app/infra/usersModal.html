@@ -11,9 +11,9 @@
 				<div class="form-group has-success has-feedback" ng-class="{'has-error':!ctrl.entity.ID_GROUP_USER}">
 					<label class="control-label" for="ID_GROUP_USER">Grupo</label>
 					<ui-select ng-model="ctrl.entity.ID_GROUP_USER" theme="bootstrap">
-						<ui-select-match placeholder="Selecione Grupo"></ui-select-match>
-						<ui-select-choices repeat="item in ctrl.selectbuffers['GROUP_USER'].data">
-							<div ng-bind-html="item.DESCRIPTION"></div>
+						<ui-select-match placeholder="Selecione Grupo">{{$select.selected.DESCRIPTION}}</ui-select-match>
+						<ui-select-choices repeat="item.ID_GROUP_USER as item in ctrl.selectbuffers['GROUP_USER'].data | filter: $select.search">
+							<div ng-bind-html="item.DESCRIPTION | highlight: $select.search"></div>
 						</ui-select-choices>
 					</ui-select>
 				</div>

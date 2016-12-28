@@ -95,7 +95,8 @@
 		var ctrl = this;
 		ctrl.schema = $rootScope.schema;
 		ctrl.form = $rootScope.schemaForm;
-		
+		ctrl.selectbuffers = $rootScope.selectbuffers;
+
 		ctrl.DisplayCreate = false;
 		ctrl.DisplayUpdate = true;
 
