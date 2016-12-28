@@ -1,0 +1,38 @@
+<div>
+    <div class="modal-header">
+<!--     	<button type="button" class="close" ng-click="$close()">x</button>
+ -->        
+ 		<h3 class="modal-title">Editar {{ctrl.schema.title}}</h3>
+    </div>
+    <div class="modal-body">
+	<uib-tabset>
+		<uib-tab index="0" heading="Informações">
+	        <form name="ctrl.validForm" method="post" novalidate>
+				<div class="form-group has-success has-feedback" ng-class="{'has-error':!ctrl.entity.ID_GROUP_USER}">
+					<label class="control-label" for="ID_GROUP_USER">Grupo</label>
+					<ui-select ng-model="ctrl.entity.ID_GROUP_USER" theme="bootstrap">
+						<ui-select-match placeholder="Selecione Grupo"></ui-select-match>
+						<ui-select-choices repeat="item in ctrl.selectbuffers['GROUP_USER'].data">
+							<div ng-bind-html="item.DESCRIPTION"></div>
+						</ui-select-choices>
+					</ui-select>
+				</div>
+	        	<div class="form-group has-success has-feedback" ng-class="{'has-error':!ctrl.entity.NAME}">
+					<label class="control-label" for="NAME">Nome</label>
+					<input ng-model="ctrl.entity.NAME" type="text" class="form-control" id="NAME" name="NAME" aria-describedby="NAMEStatus" required>
+					<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+					<span id="NAMEStatus" class="sr-only">(success)</span>
+				</div>
+	        </form>
+		</uib-tab>
+		<uib-tab index="1" heading="E-mail">
+			<input type="text" ng-model="phonenumber" ui-mask="(99) 9?9999-9999"  ui-mask-placeholder ui-mask-placeholder-char="space"/>
+			<input type="text" name="field" ng-model="phoneNumber" ui-br-phone-number>
+		</uib-tab>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-success" ng-click="ctrl.create()" ng-disable="ctrl.validForm.$valid" ng-show="ctrl.DisplayCreate">Criar</button>
+        <button class="btn btn-success" ng-click="ctrl.update(grid, row)" ng-disable="ctrl.validForm.$valid" ng-show="ctrl.DisplayCreate">Gravar</button>
+        <button class="btn btn-warning" ng-click="$close()">Cancelar</button>
+    </div>
+</div>

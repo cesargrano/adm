@@ -32,7 +32,7 @@
 		};
 		usersFactory.update = function (grid, row) {
 			$uibModal.open({
-				templateUrl: 'app/views/editModal.html',
+				templateUrl: 'app/infra/usersModal.html',
 				controller: 'ModalUpdateUserCtrl',
 				controllerAs: 'ctrl',
 				resolve: {
