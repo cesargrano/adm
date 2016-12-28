@@ -52,6 +52,11 @@
 				//ctrl.height = (ctrl.gridOptions.data.length + 3.05) * 30;
 				$rootScope.schema = result.data.schema;
 				$rootScope.schemaForm = result.data.form;
+				
+				$rootScope.selectbuffers = result.data.selectbuffers;
+				
+				console.log($rootScope.selectbuffers['GROUP_USER'].data);
+
 			}, function(err){
 				//do something if Error();
 				console.log(err);
@@ -94,9 +99,6 @@
 		ctrl.DisplayCreate = false;
 		ctrl.DisplayUpdate = true;
 
-		console.log(ctrl.schema);
-		console.log(ctrl.form);
-		
 		ctrl.gridOptions = UsersFactory.gridOptions;
 		ctrl.entity = angular.copy(row.entity);
 		ctrl.groupUserOnChange = UsersFactory.groupUserOnChange; //(ctrl.entity, ctrl.modelValue, ctrl.form);
