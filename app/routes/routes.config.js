@@ -1,7 +1,7 @@
 (function() {
 	'use strict';
 	
-	app.config(function ($stateProvider, $urlRouterProvider, $locationProvider/*, USER_ROLES*/) {
+	app.config(function ($stateProvider, $urlRouterProvider, $locationProvider /*, USER_ROLES*/) {
 	    //
 	    // For any unmatched url, redirect to /login
 	    $urlRouterProvider.otherwise("/login");
