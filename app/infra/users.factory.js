@@ -76,14 +76,8 @@
 		};
 		//var columnSize = width[0]/usersFactory.gridOptions.columnDefs.length;
 		
-		usersFactory.groupUserOnChange = function(modelValue, form, model, field) {
-			var titleMap = form.titleMap
-			for (var i = 0; i < titleMap.length; i++) {
-				if (titleMap[i].value == modelValue) {
-					model[field] = titleMap[i].name;
-					break;
-				}
-			}
+		usersFactory.groupUserOnChange = function(item, display, entity, field) {
+			entity[field] = item[display];
 		};
 		
 		return usersFactory;

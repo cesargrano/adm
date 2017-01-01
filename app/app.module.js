@@ -10,7 +10,5 @@ var app = angular.module('adm',[ 'ui.router',
                                 'ui.grid.autoResize',
                                 'ui-notification',
                                 'ui.select',
-                                'ui.utils.masks',
-                                'angularSchemaFormUiMask',
-                                'schemaForm'])
+                                'ui.utils.masks'])
                                 .filter('to_html', function($sce) { return $sce.trustAsHtml; });

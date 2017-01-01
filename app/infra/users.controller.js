@@ -12,13 +12,9 @@
 	
 		ctrl.gridOptions = UsersFactory.gridOptions;
 	
-//		$http.get($state.current.data.schemaForm).success(function(data) {
-//			$rootScope.schema = data.schema;
-//			$rootScope.schemaForm = data.form;
-//			ctrl.gridOptions.columnDefs = data.columnDefs;
-//		});
-		
 		ctrl.title = $state.current.data.title;
+		$rootScope.title = ctrl.title;
+
 		ctrl.create = UsersFactory.create;
 		ctrl.update = UsersFactory.update;
 		ctrl.delete = UsersFactory.delete;
@@ -42,21 +38,13 @@
 			ctrl.error = false;
 			var trt = TRANSACTION_TYPE.read;
 			UsersFactory.transaction(null, 'GET', 'table', trt, function(result){
-				//Success();
-//				console.log(result.data.schema);
-//				console.log(result.data.form);
-				
 				ctrl.gridOptions.columnDefs = result.data.columnDefs;
 				ctrl.gridOptions.data = result.data.data;
+				$rootScope.selectbuffers = result.data.selectbuffers;
+
 				//console.log(ctrl.gridOptions.onRegisterApi($scope.gridApi));
 				//ctrl.height = (ctrl.gridOptions.data.length + 3.05) * 30;
-				$rootScope.schema = result.data.schema;
-				$rootScope.schemaForm = result.data.form;
 				
-				$rootScope.selectbuffers = result.data.selectbuffers;
-				
-				console.log($rootScope.selectbuffers['GROUP_USER'].data);
-
 			}, function(err){
 				//do something if Error();
 				console.log(err);
@@ -72,8 +60,6 @@
 		ctrl.DisplayCreate = true;
 		ctrl.DisplayUpdate = false;
 
-		ctrl.schema = $rootScope.schema;
-		ctrl.form = $rootScope.schemaForm;
 		ctrl.gridOptions = UsersFactory.gridOptions;
 		ctrl.entity = {};
 		ctrl.groupUserOnChange = UsersFactory.groupUserOnChange; //(ctrl.entity, ctrl.modelValue, ctrl.form);
@@ -93,8 +79,7 @@
 	});
 	app.controller('ModalUpdateUserCtrl',function ($uibModalInstance, grid, row, $rootScope, UsersFactory, TRANSACTION_TYPE) {
 		var ctrl = this;
-		ctrl.schema = $rootScope.schema;
-		ctrl.form = $rootScope.schemaForm;
+		ctrl.title = $rootScope.title;
 		ctrl.selectbuffers = $rootScope.selectbuffers;
 
 		ctrl.DisplayCreate = false;
@@ -102,6 +87,7 @@
 
 		ctrl.gridOptions = UsersFactory.gridOptions;
 		ctrl.entity = angular.copy(row.entity);
+		
 		ctrl.groupUserOnChange = UsersFactory.groupUserOnChange; //(ctrl.entity, ctrl.modelValue, ctrl.form);
 		ctrl.update = function () {
 			// Copy row values over
@@ -120,8 +106,6 @@
 	});
 	app.controller('ModalDeleteUserCtrl',function ($uibModalInstance, grid, row, $rootScope, UsersFactory, TRANSACTION_TYPE) {
 		var ctrl = this;
-		ctrl.schema = $rootScope.schema;
-		ctrl.form = $rootScope.schemaForm;
 		ctrl.gridOptions = UsersFactory.gridOptions;
 		ctrl.entity = angular.copy(row.entity);
 		ctrl.delete = function () {

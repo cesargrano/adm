@@ -26,16 +26,13 @@
     "angular-touch": "^1.5.8",
     "components-font-awesome": "^4.6.3",
     "angular-ui-grid": "^3.2.9",
-    "angular-schema-form": "^0.8.13",
     "angular-ui-notification": "^0.2.0",
     "angular-aria": "^1.5.9",
     "angular-ui-ace": "^0.2.3",
     "ace-builds": "^1.2.6",
     "moment": "^2.17.1",
-    "angular-schema-form-dynamic-select": "^0.15.0",
-    "angular-schema-form-ui-select": "^0.1.1",
     "angular-ui-select": "^0.19.6",
     "angular-input-masks": "^2.5.0",
-    "angular-schema-form-bootstrap": "^0.2.0"
+    "select2": "^3.5.4"
   }
 }

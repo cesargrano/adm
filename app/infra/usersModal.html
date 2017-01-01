@@ -2,7 +2,7 @@
     <div class="modal-header">
 <!--     	<button type="button" class="close" ng-click="$close()">x</button>
  -->        
- 		<h3 class="modal-title">Editar {{ctrl.schema.title}}</h3>
+ 		<h3 class="modal-title">Editar {{ctrl.title}}</h3>
     </div>
     <div class="modal-body">
 	<uib-tabset>
@@ -10,18 +10,33 @@
 	        <form name="ctrl.validForm" method="post" novalidate>
 				<div class="form-group has-success has-feedback" ng-class="{'has-error':!ctrl.entity.ID_GROUP_USER}">
 					<label class="control-label" for="ID_GROUP_USER">Grupo</label>
-					<ui-select ng-model="ctrl.entity.ID_GROUP_USER" theme="bootstrap">
+					<ui-select ng-model="ctrl.entity.ID_GROUP_USER" theme="select2" on-select="ctrl.groupUserOnChange($item, 'DESCRIPTION', ctrl.entity, 'TMP_GROUP_USER')">
 						<ui-select-match placeholder="Selecione Grupo">{{$select.selected.DESCRIPTION}}</ui-select-match>
 						<ui-select-choices repeat="item.ID_GROUP_USER as item in ctrl.selectbuffers['GROUP_USER'].data | filter: $select.search">
 							<div ng-bind-html="item.DESCRIPTION | highlight: $select.search"></div>
 						</ui-select-choices>
 					</ui-select>
 				</div>
+				<input ng-model="ctrl.entity.TMP_GROUP_USER" type="text" class="form-control" id="TMP_GROUP_USER" name="TMP_GROUP_USER" ng-show="false">
 	        	<div class="form-group has-success has-feedback" ng-class="{'has-error':!ctrl.entity.NAME}">
 					<label class="control-label" for="NAME">Nome</label>
 					<input ng-model="ctrl.entity.NAME" type="text" class="form-control" id="NAME" name="NAME" aria-describedby="NAMEStatus" required>
 					<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
 					<span id="NAMEStatus" class="sr-only">(success)</span>
+				</div>
+				<div class="row">
+		        	<div class="form-group has-success has-feedback col-md-6" ng-class="{'has-error':!ctrl.entity.LOGIN}">
+						<label class="control-label" for="LOGIN">Login</label>
+						<input ng-model="ctrl.entity.LOGIN" type="text" class="form-control" id="LOGIN" name="LOGIN" aria-describedby="LOGINStatus" required>
+						<span class="glyphicon glyphicon-ok form-control-feedback form-control-feedback-col" aria-hidden="true"></span>
+						<span id="LOGINStatus" class="sr-only">(success)</span>
+					</div>
+		        	<div class="form-group has-success has-feedback col-md-6" ng-class="{'has-error':!ctrl.entity.PASSWORD}">
+						<label class="control-label" for="PASSWORD">Senha</label>
+						<input ng-model="ctrl.entity.PASSWORD" type="password" class="form-control" id="PASSWORD" name="PASSWORD" aria-describedby="PASSWORDStatus" required>
+						<span class="glyphicon glyphicon-ok form-control-feedback form-control-feedback-col" aria-hidden="true"></span>
+						<span id="PASSWORDStatus" class="sr-only">(success)</span>
+					</div>
 				</div>
 	        </form>
 		</uib-tab>
