@@ -13,11 +13,14 @@
 		ctrl.gridOptions = UsersFactory.gridOptions;
 	
 		ctrl.title = $state.current.data.title;
+		ctrl.title2 = $state.current.data.title2;
 		$rootScope.title = ctrl.title;
+		$rootScope.title2 = ctrl.title2;
 
-		ctrl.create = UsersFactory.create;
+		ctrl.insert = UsersFactory.insert;
 		ctrl.update = UsersFactory.update;
 		ctrl.delete = UsersFactory.delete;
+		ctrl.openDetail = UsersFactory.openDetail;
 		
 		ctrl.getTableHeight = function() {
 			var rowHeight = 30; // your row height
@@ -54,16 +57,18 @@
 		
 	});
 	
-	app.controller('ModalCreateUserCtrl',function ($uibModalInstance, $rootScope, UsersFactory, TRANSACTION_TYPE) {
+	app.controller('ModalInsertUserCtrl',function ($uibModalInstance, $rootScope, UsersFactory, TRANSACTION_TYPE) {
 		var ctrl = this;
 		
-		ctrl.DisplayCreate = true;
-		ctrl.DisplayUpdate = false;
+		ctrl.titleType = "Novo";
+		ctrl.title2 = $rootScope.title2;
+		ctrl.selectbuffers = $rootScope.selectbuffers;
 
 		ctrl.gridOptions = UsersFactory.gridOptions;
 		ctrl.entity = {};
-		ctrl.groupUserOnChange = UsersFactory.groupUserOnChange; //(ctrl.entity, ctrl.modelValue, ctrl.form);
-		ctrl.create = function () {
+		
+		ctrl.groupUserOnChange = UsersFactory.groupUserOnChange;
+		ctrl.save = function () {
 			var trt = TRANSACTION_TYPE.insert;
 			UsersFactory.transaction(ctrl.entity, 'POST', 'save', trt, function(result){
 				//Success();
@@ -76,20 +81,23 @@
 			$uibModalInstance.close();
 		};
 		
+		ctrl.isValid = function () {
+			return ctrl.entity.NAME && ctrl.entity.LOGIN && ctrl.entity.PASSWORD && ctrl.entity.EMAIL && ctrl.entity.MOBILE;
+	    };
+
 	});
 	app.controller('ModalUpdateUserCtrl',function ($uibModalInstance, grid, row, $rootScope, UsersFactory, TRANSACTION_TYPE) {
 		var ctrl = this;
-		ctrl.title = $rootScope.title;
+		
+		ctrl.titleType = "Edição";
+		ctrl.title2 = $rootScope.title2;
 		ctrl.selectbuffers = $rootScope.selectbuffers;
-
-		ctrl.DisplayCreate = false;
-		ctrl.DisplayUpdate = true;
 
 		ctrl.gridOptions = UsersFactory.gridOptions;
 		ctrl.entity = angular.copy(row.entity);
 		
-		ctrl.groupUserOnChange = UsersFactory.groupUserOnChange; //(ctrl.entity, ctrl.modelValue, ctrl.form);
-		ctrl.update = function () {
+		ctrl.groupUserOnChange = UsersFactory.groupUserOnChange;
+		ctrl.save = function () {
 			// Copy row values over
 			row.entity = angular.extend(row.entity, ctrl.entity);
 			var trt = TRANSACTION_TYPE.update;
@@ -103,6 +111,10 @@
 			});
 			$uibModalInstance.close(row.entity);
 		};
+		
+		ctrl.isValid = function () {
+			return ctrl.entity.NAME && ctrl.entity.LOGIN && ctrl.entity.PASSWORD && ctrl.entity.EMAIL && ctrl.entity.MOBILE;
+	    };
 	});
 	app.controller('ModalDeleteUserCtrl',function ($uibModalInstance, grid, row, $rootScope, UsersFactory, TRANSACTION_TYPE) {
 		var ctrl = this;

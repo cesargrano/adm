@@ -23,16 +23,16 @@
 				error;
 			});
 		};
-		usersFactory.create = function () {
+		usersFactory.insert = function () {
 			$uibModal.open({
-				templateUrl: 'app/views/createModal.html',
-				controller: 'ModalCreateUserCtrl',
+				templateUrl: 'app/infra/users/usersModal.html',
+				controller: 'ModalInsertUserCtrl',
 				controllerAs: 'ctrl'
 			});
 		};
 		usersFactory.update = function (grid, row) {
 			$uibModal.open({
-				templateUrl: 'app/infra/usersModal.html',
+				templateUrl: 'app/infra/users/usersModal.html',
 				controller: 'ModalUpdateUserCtrl',
 				controllerAs: 'ctrl',
 				resolve: {
@@ -79,6 +79,21 @@
 		usersFactory.groupUserOnChange = function(item, display, entity, field) {
 			entity[field] = item[display];
 		};
+		
+		
+		usersFactory.openDetail = function (url, ctrl, grid, row) {
+			$uibModal.open({
+				templateUrl: url, //'app/infra/users/usersEmailModal.html',
+				controller: ctrl, //'UsersEmailCtrl',
+				controllerAs: 'ctrl',
+				resolve: {
+					grid: function () { return grid; },
+					row: function () { return row; }
+				}
+			});
+		};
+		
+
 		
 		return usersFactory;
 	});

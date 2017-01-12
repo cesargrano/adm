@@ -34,12 +34,12 @@
 	        })
 	        .state('Users', {
 	            url: "/users",
-	            templateUrl: "app/infra/users.html",
+	            templateUrl: "app/infra/users/users.html",
 	            data: {
 	                title: 'Usuários',
+	                title2: 'Usuário',
 	                entity: 'Infra',
-	                table: 'Users',
-	                schemaForm: 'app/infra/schema-form/users.json'
+	                table: 'Users'
 	            }
 	        })
 		    .state('EmailType', {
@@ -48,8 +48,7 @@
 		        data: {
 		            title: 'Tipos de Emails',
 		            entity: 'Infra',
-		            table: 'EmailType',
-		            schemaForm: 'app/infra/schema-form/emailType.json'
+		            table: 'EmailType'
 		        }
 		    });
 	    /*$locationProvider.html5Mode({
