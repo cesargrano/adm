@@ -2,76 +2,68 @@
     <div class="modal-header">
 <!--     	<button type="button" class="close" ng-click="$close()">x</button>
  -->        
- 		<h3 class="modal-title">{{ctrl.titleType}} {{ctrl.title2}}</h3>
+ 		<h3 class="modal-title">{{ctrl.titleType}} {{ctrl.simpleTitle}}</h3>
     </div>
     <div class="modal-body">
-		<uib-tabset>
-			<uib-tab index="0" heading="Informações">
-		        <form name="ctrl.validForm" method="post" novalidate>
-					<div class="form-group has-success has-feedback" ng-class="{'has-error':!ctrl.entity.ID_GROUP_USER}">
-						<label class="control-label" for="ID_GROUP_USER">Grupo</label>
-						<ui-select ng-model="ctrl.entity.ID_GROUP_USER" theme="select2" on-select="ctrl.groupUserOnChange($item, 'DESCRIPTION', ctrl.entity, 'TMP_GROUP_USER')">
-							<ui-select-match placeholder="Selecione Grupo">{{$select.selected.DESCRIPTION}}</ui-select-match>
-							<ui-select-choices repeat="item.ID_GROUP_USER as item in ctrl.selectbuffers['GROUP_USER'].data | filter: $select.search">
-								<div ng-bind-html="item.DESCRIPTION | highlight: $select.search"></div>
-							</ui-select-choices>
-						</ui-select>
-						<span class="glyphicon glyphicon-ok form-control-feedback form-control-feedback-col" ng-class="{'glyphicon-remove':!ctrl.entity.ID_GROUP_USER}" aria-hidden="true"></span>
-						<span id="ID_GROUP_USERStatus" class="sr-only">(success)</span>
-					</div>
-					<input ng-model="ctrl.entity.TMP_GROUP_USER" type="text" class="form-control" id="TMP_GROUP_USER" name="TMP_GROUP_USER" ng-show="false">
-		        	<div class="form-group has-success has-feedback" ng-class="{'has-error':!ctrl.entity.NAME}">
-						<label class="control-label" for="NAME">Nome</label>
-						<input ng-model="ctrl.entity.NAME" type="text" class="form-control" id="NAME" name="NAME" aria-describedby="NAMEStatus" required>
-						<span class="glyphicon glyphicon-ok form-control-feedback" ng-class="{'glyphicon-remove':!ctrl.entity.NAME}" aria-hidden="true"></span>
-						<span id="NAMEStatus" class="sr-only">(success)</span>
-					</div>
-					<div class="row">
-			        	<div class="form-group has-success has-feedback col-md-6" ng-class="{'has-error':!ctrl.entity.LOGIN}">
-							<label class="control-label" for="LOGIN">Login</label>
-							<input ng-model="ctrl.entity.LOGIN" type="text" class="form-control" id="LOGIN" name="LOGIN" aria-describedby="LOGINStatus" required>
-							<span class="glyphicon glyphicon-ok form-control-feedback form-control-feedback-col" ng-class="{'glyphicon-remove':!ctrl.entity.LOGIN}" aria-hidden="true"></span>
-							<span id="LOGINStatus" class="sr-only">(success)</span>
-						</div>
-			        	<div class="form-group has-success has-feedback col-md-6" ng-class="{'has-error':!ctrl.entity.PASSWORD}">
-							<label class="control-label" for="PASSWORD">Senha</label>
-							<input ng-model="ctrl.entity.PASSWORD" type="password" class="form-control" id="PASSWORD" name="PASSWORD" aria-describedby="PASSWORDStatus" required>
-							<span class="glyphicon glyphicon-ok form-control-feedback form-control-feedback-col" ng-class="{'glyphicon-remove':!ctrl.entity.PASSWORD}" aria-hidden="true"></span>
-							<span id="PASSWORDStatus" class="sr-only">(success)</span>
-						</div>
-					</div>
-					<div class="row">
-			        	<div class="form-group has-success has-feedback col-md-6" ng-class="{'has-error':!ctrl.entity.EMAIL}">
-							<label class="control-label" for="EMAIL">E-mail</label>
-							<input ng-model="ctrl.entity.EMAIL" type="email" class="form-control" id="EMAIL" name="EMAIL" aria-describedby="EMAILStatus" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
-							<span class="glyphicon glyphicon-ok form-control-feedback form-control-feedback-col" ng-class="{'glyphicon-remove':!ctrl.entity.EMAIL}" aria-hidden="true"></span>
-							<span id="EMAILStatus" class="sr-only">(success)</span>
-						</div>
-			        	<div class="form-group has-success has-feedback col-md-6" ng-class="{'has-error':!ctrl.entity.MOBILE}">
-							<label class="control-label" for="MOBILE">Celular</label>
-							<input ng-model="ctrl.entity.MOBILE" type="text" class="form-control" id="MOBILE" name="MOBILE" ui-br-phone-number aria-describedby="MOBILEStatus" required>
-							<span class="glyphicon glyphicon-ok form-control-feedback form-control-feedback-col" ng-class="{'glyphicon-remove':!ctrl.entity.MOBILE}" aria-hidden="true"></span>
-							<span id="MOBILEStatus" class="sr-only">(success)</span>
-						</div>
-					</div>
-					<div class="has-success">
-						<div class="checkbox">
-							<label>
-								<input ng-model="ctrl.entity.ACTIVE" type="checkbox" id="ACTIVE" name="ACTIVE">
-								Ativo
-							</label>
-						</div>
-					</div>
-		        </form>
-			</uib-tab>
-			<uib-tab index="1" heading="E-mail">
-				<input type="text" ng-model="phonenumber" ui-mask="(99) 9?9999-9999"  ui-mask-placeholder ui-mask-placeholder-char="space"/>
-				<input type="text" name="field" ng-model="phoneNumber" ui-br-phone-number>
-			</uib-tab>
-		<uib-tabset>
+        <form name="ctrl.validForm" method="post" novalidate>
+			<div class="form-group has-success has-feedback" ng-class="{'has-error':!ctrl.entity.ID_GROUP_USER}">
+				<label class="control-label" for="ID_GROUP_USER">Grupo</label>
+				<ui-select ng-model="ctrl.entity.ID_GROUP_USER" theme="select2" on-select="ctrl.selectOnChange($item, 'DESCRIPTION', ctrl.entity, 'TMP_GROUP_USER')">
+					<ui-select-match placeholder="Selecione Grupo">{{$select.selected.DESCRIPTION}}</ui-select-match>
+					<ui-select-choices repeat="item.ID_GROUP_USER as item in ctrl.selectBuffers['GROUP_USER'].data | filter: $select.search">
+						<div ng-bind-html="item.DESCRIPTION | highlight: $select.search"></div>
+					</ui-select-choices>
+				</ui-select>
+				<span class="glyphicon glyphicon-ok form-control-feedback form-control-feedback-col" ng-class="{'glyphicon-remove':!ctrl.entity.ID_GROUP_USER}" aria-hidden="true"></span>
+				<span id="ID_GROUP_USERStatus" class="sr-only">(success)</span>
+			</div>
+			<input ng-model="ctrl.entity.TMP_GROUP_USER" type="text" class="form-control" id="TMP_GROUP_USER" name="TMP_GROUP_USER" ng-show="false">
+        	<div class="form-group has-success has-feedback" ng-class="{'has-error':!ctrl.entity.NAME}">
+				<label class="control-label" for="NAME">Nome</label>
+				<input ng-model="ctrl.entity.NAME" type="text" class="form-control" id="NAME" name="NAME" aria-describedby="NAMEStatus" required>
+				<span class="glyphicon glyphicon-ok form-control-feedback" ng-class="{'glyphicon-remove':!ctrl.entity.NAME}" aria-hidden="true"></span>
+				<span id="NAMEStatus" class="sr-only">(success)</span>
+			</div>
+			<div class="row">
+	        	<div class="form-group has-success has-feedback col-md-6" ng-class="{'has-error':!ctrl.entity.LOGIN}">
+					<label class="control-label" for="LOGIN">Login</label>
+					<input ng-model="ctrl.entity.LOGIN" type="text" class="form-control" id="LOGIN" name="LOGIN" aria-describedby="LOGINStatus" required>
+					<span class="glyphicon glyphicon-ok form-control-feedback form-control-feedback-col" ng-class="{'glyphicon-remove':!ctrl.entity.LOGIN}" aria-hidden="true"></span>
+					<span id="LOGINStatus" class="sr-only">(success)</span>
+				</div>
+	        	<div class="form-group has-success has-feedback col-md-6" ng-class="{'has-error':!ctrl.entity.PASSWORD}">
+					<label class="control-label" for="PASSWORD">Senha</label>
+					<input ng-model="ctrl.entity.PASSWORD" type="password" class="form-control" id="PASSWORD" name="PASSWORD" aria-describedby="PASSWORDStatus" required>
+					<span class="glyphicon glyphicon-ok form-control-feedback form-control-feedback-col" ng-class="{'glyphicon-remove':!ctrl.entity.PASSWORD}" aria-hidden="true"></span>
+					<span id="PASSWORDStatus" class="sr-only">(success)</span>
+				</div>
+			</div>
+			<div class="row">
+	        	<div class="form-group has-success has-feedback col-md-6" ng-class="{'has-error':!ctrl.entity.EMAIL}">
+					<label class="control-label" for="EMAIL">E-mail</label>
+					<input ng-model="ctrl.entity.EMAIL" type="email" class="form-control" id="EMAIL" name="EMAIL" aria-describedby="EMAILStatus" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+					<span class="glyphicon glyphicon-ok form-control-feedback form-control-feedback-col" ng-class="{'glyphicon-remove':!ctrl.entity.EMAIL}" aria-hidden="true"></span>
+					<span id="EMAILStatus" class="sr-only">(success)</span>
+				</div>
+	        	<div class="form-group has-success has-feedback col-md-6" ng-class="{'has-error':!ctrl.entity.MOBILE}">
+					<label class="control-label" for="MOBILE">Celular</label>
+					<input ng-model="ctrl.entity.MOBILE" type="text" class="form-control" id="MOBILE" name="MOBILE" ui-br-phone-number aria-describedby="MOBILEStatus" required>
+					<span class="glyphicon glyphicon-ok form-control-feedback form-control-feedback-col" ng-class="{'glyphicon-remove':!ctrl.entity.MOBILE}" aria-hidden="true"></span>
+					<span id="MOBILEStatus" class="sr-only">(success)</span>
+				</div>
+			</div>
+			<div class="has-success">
+				<div class="checkbox">
+					<label>
+						<input ng-model="ctrl.entity.ACTIVE" type="checkbox" id="ACTIVE" name="ACTIVE">
+						Ativo
+					</label>
+				</div>
+			</div>
+        </form>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-success" ng-click="ctrl.save(grid, row)" ng-disable="ctrl.validForm.$valid" ng-if="ctrl.isValid()">Gravar</button>
+        <button class="btn btn-success" ng-click="ctrl.save(grid, row)" ng-disable="ctrl.validForm.$valid" ng-if="ctrl.entity.NAME && ctrl.entity.LOGIN && ctrl.entity.PASSWORD && ctrl.entity.EMAIL && ctrl.entity.MOBILE">Gravar</button>
         <button class="btn btn-warning" ng-click="$close()">Cancelar</button>
     </div>
 </div>

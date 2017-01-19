@@ -1,0 +1,41 @@
+<div>
+    <div class="modal-header">
+<!--     	<button type="button" class="close" ng-click="$close()">x</button>
+ -->        
+ 		<h3 class="modal-title">{{ctrl.titleType}} {{ctrl.simpleTitle}}</h3>
+    </div>
+    <div class="modal-body">
+        <form name="ctrl.validForm" method="post" novalidate>
+			<div class="form-group has-success has-feedback" ng-class="{'has-error':!ctrl.entity.ID_EMAIL_TYPE}">
+				<label class="control-label" for="ID_EMAIL_TYPE">Tipo</label>
+				<ui-select ng-model="ctrl.entity.ID_EMAIL_TYPE" theme="select2" on-select="ctrl.selectOnChange($item, 'EMAIL_TYPE', ctrl.entity, 'TMP_EMAIL_TYPE')">
+					<ui-select-match placeholder="Selecione Grupo">{{$select.selected.EMAIL_TYPE}}</ui-select-match>
+					<ui-select-choices repeat="item.ID_EMAIL_TYPE as item in ctrl.selectBuffers['EMAIL_TYPE'].data | filter: $select.search">
+						<div ng-bind-html="item.EMAIL_TYPE | highlight: $select.search"></div>
+					</ui-select-choices>
+				</ui-select>
+				<span class="glyphicon glyphicon-ok form-control-feedback form-control-feedback-col" ng-class="{'glyphicon-remove':!ctrl.entity.ID_EMAIL_TYPE}" aria-hidden="true"></span>
+				<span id="ID_EMAIL_TYPEStatus" class="sr-only">(success)</span>
+			</div>
+			<input ng-model="ctrl.entity.TMP_EMAIL_TYPE" type="text" class="form-control" id="TMP_EMAIL_TYPE" name="TMP_EMAIL_TYPE" ng-show="false">
+        	<div class="form-group has-success has-feedback" ng-class="{'has-error':!ctrl.entity.EMAIL}">
+				<label class="control-label" for="EMAIL">E-mail</label>
+				<input ng-model="ctrl.entity.EMAIL" type="email" class="form-control" id="EMAIL" name="EMAIL" aria-describedby="EMAILStatus" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+				<span class="glyphicon glyphicon-ok form-control-feedback" ng-class="{'glyphicon-remove':!ctrl.entity.EMAIL}" aria-hidden="true"></span>
+				<span id="EMAILStatus" class="sr-only">(success)</span>
+			</div>
+			<div class="has-success">
+				<div class="checkbox">
+					<label>
+						<input ng-model="ctrl.entity.ACTIVE" type="checkbox" id="ACTIVE" name="ACTIVE">
+						Ativo
+					</label>
+				</div>
+			</div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-success" ng-click="ctrl.save(grid, row)" ng-disable="ctrl.validForm.$valid" ng-if="ctrl.entity.ID_EMAIL_TYPE && ctrl.entity.EMAIL">Gravar</button>
+        <button class="btn btn-warning" ng-click="$close()">Cancelar</button>
+    </div>
+</div>
