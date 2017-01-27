@@ -8,7 +8,8 @@
 		var master = row.entity;
 	
 		ctrl.gridOptions = DetailService.gridOptions;
-		
+		ctrl.gridOptions.data = null;
+
 		DetailService.entity = entity;
 		DetailService.table = table;
 
@@ -38,13 +39,16 @@
 				ctrl.gridOptions.columnDefs = result.data.columnDefs;
 				ctrl.gridOptions.data = result.data.data;
 				ctrl.title = result.data.title;
-				ctrl.simpleTitle = result.data.simpleTitle;
+
 				DetailService.title = result.data.title;
 				DetailService.simpleTitle = result.data.simpleTitle;
+				DetailService.displayModalDelete = result.data.displayModalDelete;
 				DetailService.selectBuffers = result.data.selectBuffers;
 				DetailService.masterColumn = result.data.masterColumn;
 				DetailService.masterColumnValue = master[result.data.masterColumn];
-				DetailService.insertBuffer = result.data.insertBuffer.data[0];
+				
+				if (result.data.insertBuffer != undefined)
+					DetailService.insertBuffer = result.data.insertBuffer.data[0];
 				
 			}, function(err){
 				//do something if Error();
@@ -63,7 +67,7 @@
 		ctrl.selectBuffers = DetailService.selectBuffers;
 		
 		ctrl.gridOptions = DetailService.gridOptions;
-		ctrl.entity = DetailService.insertBuffer;
+		ctrl.entity = angular.copy(DetailService.insertBuffer);
 		ctrl.entity[DetailService.masterColumn] = DetailService.masterColumnValue;
 
 		ctrl.selectOnChange = FunctionsService.selectOnChange;
@@ -111,6 +115,8 @@
 		var ctrl = this;
 		ctrl.gridOptions = DetailService.gridOptions;
 		ctrl.entity = angular.copy(row.entity);
+		ctrl.displayModalDelete = ctrl.entity[MasterService.displayModalDelete];
+
 		ctrl.delete = function () {
 			// Copy row values over
 			row.entity = angular.extend(row.entity, ctrl.entity);

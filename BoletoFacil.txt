@@ -1,3 +1,7 @@
 https://sandbox.boletobancario.com/boletofacil/integration/api/v1/issue-charge?token=A204B42AAA715FD8508BD90B4ABBE952B091938B1D18FAAC&description=Pedido1792&amount=12.75&payerName=Ana+Zanella&payerCpfCnpj=08371005857&payerEmail=ana@sedeinfo.com.br
 
 SELECT CONCAT_WS('', CNPJ, CPF) as CNPJ, COMPANY, EMAIL, PHONE, ADDRESS, NUMBER, COMPLEMENT, BAIRRO, CITY, STATE, ZIP_CODE, CONCAT_WS(' ', DOMAIN, EMAIL) as DOMAIN FROM COMPANY WHERE GERA_BOLETO = 1
+
+
+
+UPDATE `MENU` SET `MNEMONICO` = 'MenuTree' WHERE 10000000000003

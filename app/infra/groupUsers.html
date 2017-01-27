@@ -1,9 +1,9 @@
 <div ng-controller="MasterCtrl as ctrl">
 	<h1 class="page-header">{{ctrl.title}}</h1>
-    <div class="addUser" ng-click="ctrl.insert('app/infra/users/usersModal.html', 'ModalInsertMasterCtrl')">
+    <div class="addUser" ng-click="ctrl.insert('app/infra/groupUsersModal.html', 'ModalInsertMasterCtrl')">
         <i class="fa fa-plus ui-grid-link" aria-hidden="true"></i>
     </div>
-    <div id="grid1" ui-grid="ctrl.gridOptions" class="grid" 
+    <div id="gridGroupUsers" ui-grid="ctrl.gridOptions" class="grid" 
     	ui-grid-pagination ui-grid-selection ui-grid-auto-resize 
     	ng-style="ctrl.getTableHeight()"></div>
 </div>

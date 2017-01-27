@@ -42,6 +42,15 @@
 	                table: 'Users'
 	            }
 	        })
+		    .state('GroupUsers', {
+		        url: "/groupUsers",
+		        templateUrl: "app/infra/groupUsers.html",
+		        data: {
+		            title: 'Tipos de Emails',
+		            entity: 'Infra',
+		            table: 'GroupUsers'
+		        }
+		    })
 		    .state('EmailType', {
 		        url: "/emailType",
 		        templateUrl: "app/infra/users.html",
@@ -49,6 +58,15 @@
 		            title: 'Tipos de Emails',
 		            entity: 'Infra',
 		            table: 'EmailType'
+		        }
+		    })
+		    .state('MenuTreeView', {
+		        url: "/menuTreeView",
+		        templateUrl: "app/infra/menu/menuTreeView.html",
+		        data: {
+		            title: 'Menu do Siatema',
+		            entity: 'Infra',
+		            table: 'Menu'
 		        }
 		    });
 	    /*$locationProvider.html5Mode({

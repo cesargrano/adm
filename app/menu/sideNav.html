@@ -1,45 +1,42 @@
-<nav ng-controller="SideNavCtrl as sideNav"
-     class="col-xs-4 sidenav sidebar horizontal-collapse"
-     horizontal
-     uib-collapse="sideNav.toggle.status"
-     ng-style="sideNav.getWindowHeight()">
-    <ul>
-        <li class="item">
-            <a>
-                <toggle-nav></toggle-nav>
-            </a>
-        </li>
-        <li>
-        	<a class="item" ui-sref="dashboard">
-	        	<i class="fa fa-tachometer"></i>
-	        	<span class="desc ng-binding" ng-hide="sideNav.toggle.status">Dashboard</span>
-        	</a>
-        </li>
-        <li ng-repeat="item in sideNav.itens"
-            ng-class="{'dropdown':item.SUB_MENU}"
-            keyboard-nav>
-            <a class="item"
-               ng-init="sideNav.item.collapse[$index] = false"
-               ng-click="sideNav.item.collapse[$index] = !sideNav.item.collapse[$index]"
-               ng-class="{'dropdown-toggle': item.SUB_MENU}">
-                <i class="fa" ng-class="item.ICON"></i>
-                <span class="desc" ng-hide="sideNav.toggle.status">{{item.DESCRIPTION}}
-                    <span ng-if="item.SUB_MENU" class="caret"></span>
-                </span>
-            </a>
-            <ul ng-if="item.SUB_MENU" role="menu" aria-labelledby="simple-btn-keyboard-nav" uib-collapse="sideNav.item.collapse[$index]">
-                <li class="li-sub-item"
-                    ng-repeat="sub in item.SUB_MENU.data"
-                    ng-attr-role="{{sub.DESCRIPTION == 'SEPARADOR' ? 'separator' : 'menuitem'}}"
-                    ng-class="{'divider': sub.DESCRIPTION == 'SEPARADOR'}">
-                    <a class="sub-item"
-                       ng-if="sub.DESCRIPTION != 'SEPARADOR'"
-                       ui-sref="{{sub.MNEMONICO == '' ? '/' : sub.MNEMONICO }}">
-                        <i class="fa" ng-class="sub.ICON"></i>
-                        <span class="desc" ng-hide="sideNav.toggle.status">{{sub.DESCRIPTION}}</span>
-                    </a>
-                </li>
-            </ul>
-        </li>
-    </ul>
+<nav ng-controller="SideNavCtrl as ctrl"
+	class="col-xs-4 sidenav sidebar horizontal-collapse" horizontal
+	uib-collapse="ctrl.toggleNav.status" ng-style="ctrl.getWindowHeight()">
+	<div data-ui-tree="treeOptions" id="tree-root">
+		<ol ui-tree-nodes="" ng-model="ctrl.data">
+	    	<li class="item">
+            	<a><toggle-nav></toggle-nav></a>
+        	</li>
+        	<li>
+        		<a class="item" ui-sref="dashboard">
+	        		<i class="fa fa-tachometer"></i>
+	        		<span class="desc ng-binding" ng-hide="ctrl.toggleNav.status">Dashboard</span>
+        		</a>
+        	</li> 
+			<li ng-repeat="node in ctrl.data" ui-tree-node collapsed="false" expand-on-hover="true" ng-include="'nodes_renderer.html'"></li>
+		</ol>
+	</div>
 </nav>
+
+<script type="text/ng-template" id="nodes_renderer.html">
+	<div class="tree-node-content">
+		<a class="sub-item" 
+			ui-sref="{{node.MNEMONICO == '' ? '/' : node.MNEMONICO }}"
+			ng-init="ctrl.node.collapse[$index] = true"
+			ng-click="ctrl.toggle(this)"
+			ng-class="{'dropdown-toggle': node.SUB_MENU}"> 
+			<i class="fa" ng-class="node.ICON"></i> 
+			<span class="desc" ng-hide="ctrl.toggleNav.status">{{node.DESCRIPTION}}
+				<span class="glyphicon" ng-if="node.SUB_MENU.data && node.SUB_MENU.data.length > 0" 
+					ng-class="{
+	    		    	'glyphicon-chevron-right': collapsed,
+    	    			'glyphicon-chevron-down': !collapsed
+        			}" >
+				</span>
+			</span>
+		</a>
+  	</div>
+  	<ol ng-model="node.SUB_MENU.data" ng-class="{'angular-ui-tree-nodes':!ctrl.toggleNav.status,hidden:collapsed,displayed:!collapsed}">
+    	<li ng-repeat="node in node.SUB_MENU.data" ui-tree-node data-collapsed="false" data-expand-on-hover="false" ng-include="'nodes_renderer.html'">
+    	</li>
+  	</ol>
+</script>

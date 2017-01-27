@@ -1,0 +1,39 @@
+<div ng-controller="TreeViewCtrl as ctrl">
+	<h1 class="page-header">{{ctrl.title}}</h1>
+	<div class="row">
+		<div class="col-sm-6">
+			<div data-ui-tree="treeOptions" id="tree-root">
+				<ol data-ui-tree-nodes ng-model="ctrl.data">
+					<li data-ng-repeat="node in ctrl.data" data-ui-tree-node data-collapsed="true" data-expand-on-hover="true" ng-include="'nodes_renderer.html'"></li>
+				</ol>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/ng-template" id="nodes_renderer.html">
+  <div ui-tree-handle class="tree-node tree-node-content">
+    <a class="btn btn-success btn-xs" ng-if="node.SUB_MENU.data && node.SUB_MENU.data.length > 0" data-nodrag ng-click="ctrl.toggle(this)">
+		<span class="glyphicon" ng-class="{
+	    	    'glyphicon-chevron-right': collapsed,
+    	    	'glyphicon-chevron-down': !collapsed
+        	}">
+		</span>
+	</a>
+    {{node.DESCRIPTION}}
+    <a class="pull-right btn btn-danger btn-xs" data-nodrag ng-click="ctrl.delete(this)">
+		<span class="glyphicon glyphicon-remove"></span>
+	</a>
+    <a class="pull-right btn btn-primary btn-xs" data-nodrag ng-click="ctrl.insert(this)" style="margin-right: 8px;">
+		<span class="glyphicon glyphicon-plus"></span>
+	</a>
+    <a class="pull-right btn btn-info btn-xs" data-nodrag ng-click="ctrl.update(this)" style="margin-right: 8px;">
+		<span class="glyphicon glyphicon-edit"></span>
+	</a>
+  </div>
+  <ol ui-tree-nodes="" ng-model="node.SUB_MENU.data" ng-class="{hidden: collapsed}">
+    <li ng-repeat="node in node.SUB_MENU.data" ui-tree-node data-collapsed="true" data-expand-on-hover="true" ng-include="'nodes_renderer.html'">
+    </li>
+  </ol>
+
+</script>

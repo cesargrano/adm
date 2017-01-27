@@ -1,0 +1,27 @@
+<div>
+    <div class="modal-header">
+<!--     	<button type="button" class="close" ng-click="$close()">x</button>
+ -->        
+ 		<h3 class="modal-title">{{ctrl.titleType}} {{ctrl.simpleTitle}}</h3>
+    </div>
+    <div class="modal-body">
+        <form name="ctrl.validForm" method="post" novalidate>
+        	<div class="form-group has-success has-feedback" ng-class="{'has-error':!ctrl.entity.DESCRIPTION}">
+				<label class="control-label" for="DESCRIPTION">Descrição</label>
+				<input ng-model="ctrl.entity.DESCRIPTION" type="text" class="form-control" id="DESCRIPTION" name="DESCRIPTION" aria-describedby="DESCRIPTIONStatus" required>
+				<span class="glyphicon glyphicon-ok form-control-feedback" ng-class="{'glyphicon-remove':!ctrl.entity.DESCRIPTION}" aria-hidden="true"></span>
+				<span id="DESCRIPTIONStatus" class="sr-only">(success)</span>
+			</div>
+        	<div class="form-group has-success has-feedback" ng-class="{'has-error':!ctrl.entity.LEVEL}">
+				<label class="control-label" for="LEVEL">Nível</label>
+				<input ng-model="ctrl.entity.LEVEL" type="number" class="form-control" id="LEVEL" name="LEVEL" aria-describedby="LEVELStatus" required min="1" max="10">
+				<span class="glyphicon glyphicon-ok form-control-feedback" ng-class="{'glyphicon-remove':!ctrl.entity.LEVEL}" aria-hidden="true"></span>
+				<span id="LEVELStatus" class="sr-only">(success)</span>
+			</div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-success" ng-click="ctrl.save(grid, row)" ng-disable="ctrl.validForm.$valid" ng-if="ctrl.entity.DESCRIPTION && ctrl.entity.LEVEL">Gravar</button>
+        <button class="btn btn-warning" ng-click="$close()">Cancelar</button>
+    </div>
+</div>

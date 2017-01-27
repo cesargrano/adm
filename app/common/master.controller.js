@@ -9,6 +9,7 @@
 		MasterService.table = $state.current.data.table
 		
 		ctrl.gridOptions = MasterService.gridOptions;
+		ctrl.gridOptions.data = null;
 
 		ctrl.insert = FunctionsService.insert;
 		ctrl.update = FunctionsService.update;
@@ -34,14 +35,19 @@
 			ctrl.error = false;
 			var trt = TRANSACTION_TYPE.read;
 			FunctionsService.transaction(null, 'GET', 'table', trt, $state.current.data.entity, $state.current.data.table, function(result){
+				
 				ctrl.gridOptions.columnDefs = result.data.columnDefs;
 				ctrl.gridOptions.data = result.data.data;
 				ctrl.title = result.data.title;
-				ctrl.simpleTitle = result.data.simpleTitle;
+
 				MasterService.title = result.data.title;
 				MasterService.simpleTitle = result.data.simpleTitle;
+				MasterService.displayModalDelete = result.data.displayModalDelete;
 				MasterService.selectBuffers = result.data.selectBuffers;
-				MasterService.insertBuffer = result.data.insertBuffer.data[0];
+				
+				if (result.data.insertBuffer != undefined)
+					MasterService.insertBuffer = result.data.insertBuffer.data[0];
+				
 			}, function(err){
 				//do something if Error();
 				console.log(err);
@@ -51,14 +57,14 @@
 		
 	});
 	
-	app.controller('ModalInsertUserCtrl',function ($uibModalInstance, FunctionsService, MasterService, TRANSACTION_TYPE) {
+	app.controller('ModalInsertMasterCtrl',function ($uibModalInstance, FunctionsService, MasterService, TRANSACTION_TYPE) {
 		var ctrl = this;
 		
 		ctrl.titleType = "Novo";
 		ctrl.simpleTitle = MasterService.simpleTitle;
 		ctrl.selectBuffers = MasterService.selectBuffers;
 		ctrl.gridOptions = MasterService.gridOptions;
-		ctrl.entity = MasterService.insertBuffer;
+		ctrl.entity = angular.copy(MasterService.insertBuffer);
 		ctrl.selectOnChange = FunctionsService.selectOnChange;
 		ctrl.save = function () {
 			var trt = TRANSACTION_TYPE.insert;
@@ -73,7 +79,7 @@
 			$uibModalInstance.close();
 		};
 	});
-	app.controller('ModalUpdateUserCtrl',function ($uibModalInstance, grid, row, FunctionsService, MasterService, TRANSACTION_TYPE) {
+	app.controller('ModalUpdateMasterCtrl',function ($uibModalInstance, grid, row, FunctionsService, MasterService, TRANSACTION_TYPE) {
 		var ctrl = this;
 		
 		ctrl.titleType = "Edição";
@@ -99,10 +105,12 @@
 			$uibModalInstance.close(row.entity);
 		};
 	});
-	app.controller('ModalDeleteUserCtrl',function ($uibModalInstance, grid, row, MasterService, TRANSACTION_TYPE) {
+	app.controller('ModalDeleteMasterCtrl',function ($uibModalInstance, grid, row, MasterService, TRANSACTION_TYPE) {
 		var ctrl = this;
 		ctrl.gridOptions = MasterService.gridOptions;
 		ctrl.entity = angular.copy(row.entity);
+		ctrl.displayModalDelete = ctrl.entity[MasterService.displayModalDelete];
+
 		ctrl.delete = function () {
 			// Copy row values over
 			row.entity = angular.extend(row.entity, ctrl.entity);

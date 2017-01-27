@@ -17,5 +17,6 @@
 				masterService.registerGridApi = registerGridApi;
 			}
 		};
+		
 	});
 })();

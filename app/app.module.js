@@ -10,7 +10,8 @@ var app = angular.module('adm',[ 'ui.router',
                                 'ui.grid.autoResize',
                                 'ui-notification',
                                 'ui.select',
-                                'ui.utils.masks'])
+                                'ui.utils.masks',
+                                'ui.tree'])
                                 .filter('to_html', function($sce) { return $sce.trustAsHtml; })
                                 .filter('phoneCellMaks', function () { 
 								    return function (value) {

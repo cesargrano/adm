@@ -17,7 +17,7 @@
   margin-top: 51px;
   /* Place content 60px from the top */
 }
-.sidenav ul {
+.sidenav ol {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -26,8 +26,8 @@
   /* When you mouse over the navigation links, change their color */
   /* Position and style the close button (top right corner) */
 }
-.sidenav ul .item,
-.sidenav ul .sub-item {
+.sidenav ol .item,
+.sidenav ol .sub-item {
   padding: 8px 15px;
   cursor: pointer;
   -webkit-transition: all 0.5s ease;
@@ -35,20 +35,20 @@
   -ms-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
 }
-.sidenav ul .item .desc,
-.sidenav ul .sub-item .desc {
+.sidenav ol .item .desc,
+.sidenav ol .sub-item .desc {
   margin-left: 10px;
   cursor: pointer;
 }
-.sidenav ul .divider {
+.sidenav ol .divider {
   border-bottom: 2px groove #444444;
 }
-.sidenav ul .sub-item:hover,
-.sidenav ul .sub-item:active,
-.sidenav ul .sub-item:focus,
-.sidenav ul .item:hover,
-.sidenav ul .item:active,
-.sidenav ul .item:focus {
+.sidenav ol .sub-item:hover,
+.sidenav ol .sub-item:active,
+.sidenav ol .sub-item:focus,
+.sidenav ol .item:hover,
+.sidenav ol .item:active,
+.sidenav ol .item:focus {
   -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
   -moz-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
@@ -58,17 +58,17 @@
   -o-transition: all 0.5s ease;
   background: #666666;
 }
-.sidenav ul a {
+.sidenav ol a {
   text-decoration: none;
   font-size: 1.2em;
   color: #ffffff;
   display: block;
 }
-.sidenav ul a:hover,
-.sidenav ul .offcanvas a:focus {
+.sidenav ol a:hover,
+.sidenav ol .offcanvas a:focus {
   color: #ffffff;
 }
-.sidenav ul .closebtn {
+.sidenav ol .closebtn {
   position: absolute;
   top: 0;
   right: 25px;
@@ -89,4 +89,10 @@
   .sidenav a {
     font-size: 18px;
   }
+}
+.navbar-right {
+  margin-right: 0px;
+}
+.dropdown a {
+  cursor: pointer;
 }

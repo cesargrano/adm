@@ -128,7 +128,7 @@
   margin-top: 51px;
   /* Place content 60px from the top */
 }
-.sidenav ul {
+.sidenav ol {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -137,8 +137,8 @@
   /* When you mouse over the navigation links, change their color */
   /* Position and style the close button (top right corner) */
 }
-.sidenav ul .item,
-.sidenav ul .sub-item {
+.sidenav ol .item,
+.sidenav ol .sub-item {
   padding: 8px 15px;
   cursor: pointer;
   -webkit-transition: all 0.5s ease;
@@ -146,20 +146,20 @@
   -ms-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
 }
-.sidenav ul .item .desc,
-.sidenav ul .sub-item .desc {
+.sidenav ol .item .desc,
+.sidenav ol .sub-item .desc {
   margin-left: 10px;
   cursor: pointer;
 }
-.sidenav ul .divider {
+.sidenav ol .divider {
   border-bottom: 2px groove #444444;
 }
-.sidenav ul .sub-item:hover,
-.sidenav ul .sub-item:active,
-.sidenav ul .sub-item:focus,
-.sidenav ul .item:hover,
-.sidenav ul .item:active,
-.sidenav ul .item:focus {
+.sidenav ol .sub-item:hover,
+.sidenav ol .sub-item:active,
+.sidenav ol .sub-item:focus,
+.sidenav ol .item:hover,
+.sidenav ol .item:active,
+.sidenav ol .item:focus {
   -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
   -moz-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
@@ -169,17 +169,17 @@
   -o-transition: all 0.5s ease;
   background: #666666;
 }
-.sidenav ul a {
+.sidenav ol a {
   text-decoration: none;
   font-size: 1.2em;
   color: #ffffff;
   display: block;
 }
-.sidenav ul a:hover,
-.sidenav ul .offcanvas a:focus {
+.sidenav ol a:hover,
+.sidenav ol .offcanvas a:focus {
   color: #ffffff;
 }
-.sidenav ul .closebtn {
+.sidenav ol .closebtn {
   position: absolute;
   top: 0;
   right: 25px;
@@ -200,6 +200,12 @@
   .sidenav a {
     font-size: 18px;
   }
+}
+.navbar-right {
+  margin-right: 0px;
+}
+.dropdown a {
+  cursor: pointer;
 }
 .grid .ui-grid-header-cell-row {
   display: table-header-group;
@@ -244,6 +250,56 @@
   -moz-transform: scale(1.4) rotate(360deg);
   -ms-transform: scale(1.4) rotate(360deg);
   -o-transform: scale(1.4) rotate(360deg);
+}
+.angular-ui-tree-handle {
+  background: #f8faff;
+  border: 1px solid #dae2ea;
+  color: #7c9eb2;
+  padding: 6px 6px;
+}
+.angular-ui-tree-handle:hover {
+  color: #438eb9;
+  background: #f4f6f7;
+  border-color: #dce2e8;
+}
+.angular-ui-tree-placeholder {
+  background: #f0f9ff;
+  border: 2px dashed #bed2db;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+tr.angular-ui-tree-empty {
+  height: 100px;
+}
+.group-title {
+  background-color: #687074 !important;
+  color: #FFF !important;
+}
+/* --- Tree --- */
+.tree-node {
+  border: 1px solid #dae2ea;
+  background: #f8faff;
+  color: #7c9eb2;
+}
+.nodrop {
+  background-color: #f2dede;
+}
+.tree-node-content {
+  margin: 2px;
+}
+.tree-handle {
+  padding: 10px;
+  background: #428bca;
+  color: #FFF;
+  margin-right: 10px;
+}
+.angular-ui-tree-placeholder {
+  background: #f0f9ff;
+  border: 2px dashed #bed2db;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 body {
   background: #fafafa;
@@ -360,4 +416,7 @@ ui-view .form-group {
 }
 .select2-container {
   display: block;
+}
+.checkbox-form-group {
+  padding-left: 20px;
 }

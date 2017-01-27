@@ -1,0 +1,53 @@
+<nav ng-controller="SideNavCtrl as ctrl"
+     class="col-xs-4 sidenav sidebar horizontal-collapse"
+     horizontal
+     uib-collapse="ctrl.toggle.status"
+     ng-style="ctrl.getWindowHeight()">
+    <ol ng-model="ctrl.data">
+        <li class="item">
+            <a>
+                <toggle-nav></toggle-nav>
+            </a>
+        </li>
+        <li>
+        	<a class="item" ui-sref="dashboard">
+	        	<i class="fa fa-tachometer"></i>
+	        	<span class="desc ng-binding" ng-hide="ctrl.toggle.status">Dashboard</span>
+        	</a>
+        </li> 
+		<li ng-repeat="node in ctrl.data" ng-class="{'dropdown':node.SUB_MENU}" keyboard-nav ng-include="'nodes_renderer.html'"></li>
+    </ol>
+</nav>
+
+<!-- 
+	<a class="item" ng-init="ctrl.node.collapse[$index] = false"
+		ng-click="ctrl.node.collapse[$index] = !ctrl.node.collapse[$index]"
+		ng-class="{'dropdown-toggle': node.SUB_MENU}"> 
+		<i class="fa" ng-class="node.ICON"></i> 
+		<span class="desc" ng-hide="ctrl.toggle.status">{{node.DESCRIPTION}} 
+			<span ng-if="node.SUB_MENU.data && node.SUB_MENU.data.length > 0" class="caret"></span>
+		</span>
+		
+						<span class="desc" ng-hide="ctrl.toggle.status">{{node.DESCRIPTION}}</span>
+		ng-click="ctrl.node.collapse[$index] = !ctrl.node.collapse[$index]"
+		
+	</a>
+
+ -->
+<script type="text/ng-template" id="nodes_renderer.html">
+	<a class="sub-item" ng-if="node.DESCRIPTION != 'SEPARADOR'" 
+		ui-sref="{{node.MNEMONICO == '' ? '/' : node.MNEMONICO }}"
+		ng-init="ctrl.node.collapse[$index] = true"
+		ng-click="ctrl.node.collapse[$index] = !ctrl.node.collapse[$index]"
+		ng-class="{'dropdown-toggle': node.SUB_MENU}"> 
+		<i class="fa" ng-class="node.ICON"></i> 
+		<span class="desc" ng-hide="ctrl.toggle.status">{{node.DESCRIPTION}}
+			<span ng-if="node.SUB_MENU.data && node.SUB_MENU.data.length > 0" class="caret"></span>
+		</span>
+	</a>
+	<ol ng-if="node.SUB_MENU.data && node.SUB_MENU.data.length > 0" role="menu" aria-labelledby="simple-btn-keyboard-nav" uib-collapse="ctrl.node.collapse[$index]">
+		<li class="li-sub-item" ng-repeat="node in node.SUB_MENU.data" ng-include="'nodes_renderer.html'">
+		</li>
+	</ol>
+</script>
+

@@ -11,26 +11,35 @@
 	            menu.errMsg = error.data;
 	            window.refreshView();
 	    });
-	    menu.toggle = MenuFactory.toggle;
+	    menu.toggleNav = MenuFactory.toggleNav;
 	    menu.isNavCollapsed = true;
 	});
 	app.controller('SideNavCtrl', function($window, MenuFactory){
-	    var sideNav = this;
+	    var ctrl = this;
+	    
 	    MenuFactory.getMenu(
-	        function(success){
-	            sideNav.itens = success;
+	        function(result){
+	            ctrl.data = result;
 	        },
 	        function(error){
-	            sideNav.errMsg = error.data;
+	            ctrl.errMsg = error.data;
 	            window.refreshView();
 	    });
-	    sideNav.toggle = MenuFactory;
+	    ctrl.toggleNav = MenuFactory;
 	
-		sideNav.getWindowHeight = function() {
+		ctrl.getWindowHeight = function() {
 			var heightWindow = angular.element($window)[0].innerHeight - 52;
 			return {
 				height: heightWindow + "px" 
 			};
 		};
+		
+		ctrl.toggle = function (scope) {
+			if (scope.$$ChildScope == null)
+				ctrl.toggleNav.status = true;
+			
+			scope.toggle();
+		};
+		
 	});
 })();
