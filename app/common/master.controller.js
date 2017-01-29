@@ -8,11 +8,13 @@
 		MasterService.entity = $state.current.data.entity;
 		MasterService.table = $state.current.data.table
 		
+		ctrl.htmlTemplateButtonInsert = 'app/infra/users/usersModal.html';
+		
 		ctrl.gridOptions = MasterService.gridOptions;
 		ctrl.gridOptions.data = null;
 
 		ctrl.insert = FunctionsService.insert;
-		ctrl.update = FunctionsService.update;
+		ctrl.edit = FunctionsService.edit;
 		ctrl.delete = FunctionsService.delete;
 		ctrl.openDetail = FunctionsService.openDetail;
 		
@@ -35,10 +37,16 @@
 			ctrl.error = false;
 			var trt = TRANSACTION_TYPE.read;
 			FunctionsService.transaction(null, 'GET', 'table', trt, $state.current.data.entity, $state.current.data.table, function(result){
-				
 				ctrl.gridOptions.columnDefs = result.data.columnDefs;
 				ctrl.gridOptions.data = result.data.data;
 				ctrl.title = result.data.title;
+				
+				FunctionsService.htmlTemplateInsertEdit = result.data.htmlTemplateInsertEdit;
+				FunctionsService.htmlTemplateDelete = result.data.htmlTemplateDelete;
+
+				FunctionsService.htmlControllerInsert = result.data.htmlControllerInsert;
+				FunctionsService.htmlControllerEdit = result.data.htmlControllerEdit;
+				FunctionsService.htmlControllerDelete = result.data.htmlControllerDelete;
 
 				MasterService.title = result.data.title;
 				MasterService.simpleTitle = result.data.simpleTitle;
@@ -79,7 +87,7 @@
 			$uibModalInstance.close();
 		};
 	});
-	app.controller('ModalUpdateMasterCtrl',function ($uibModalInstance, grid, row, FunctionsService, MasterService, TRANSACTION_TYPE) {
+	app.controller('ModalEditMasterCtrl',function ($uibModalInstance, grid, row, FunctionsService, MasterService, TRANSACTION_TYPE) {
 		var ctrl = this;
 		
 		ctrl.titleType = "Edição";
@@ -105,10 +113,11 @@
 			$uibModalInstance.close(row.entity);
 		};
 	});
-	app.controller('ModalDeleteMasterCtrl',function ($uibModalInstance, grid, row, MasterService, TRANSACTION_TYPE) {
+	app.controller('ModalDeleteMasterCtrl',function ($uibModalInstance, grid, row, FunctionsService, MasterService, TRANSACTION_TYPE) {
 		var ctrl = this;
 		ctrl.gridOptions = MasterService.gridOptions;
 		ctrl.entity = angular.copy(row.entity);
+		ctrl.simpleTitle = MasterService.simpleTitle;
 		ctrl.displayModalDelete = ctrl.entity[MasterService.displayModalDelete];
 
 		ctrl.delete = function () {

@@ -34,7 +34,7 @@
 	        })
 	        .state('Users', {
 	            url: "/users",
-	            templateUrl: "app/infra/users/users.html",
+	            templateUrl: "app/views/gridViewMaster.html",
 	            data: {
 	                title: 'Usuários',
 	                title2: 'Usuário',
@@ -44,7 +44,7 @@
 	        })
 		    .state('GroupUsers', {
 		        url: "/groupUsers",
-		        templateUrl: "app/infra/groupUsers.html",
+		        templateUrl: "app/views/gridViewMaster.html",
 		        data: {
 		            title: 'Tipos de Emails',
 		            entity: 'Infra',
@@ -53,7 +53,7 @@
 		    })
 		    .state('EmailType', {
 		        url: "/emailType",
-		        templateUrl: "app/infra/users.html",
+		        templateUrl: "app/views/gridViewMaster.html",
 		        data: {
 		            title: 'Tipos de Emails',
 		            entity: 'Infra',

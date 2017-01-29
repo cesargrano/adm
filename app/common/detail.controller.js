@@ -5,6 +5,8 @@
 	app.controller('DetailCtrl', function($scope, $http, $state, $window, FunctionsService, DetailService, TRANSACTION_TYPE, APP_DATA, row, entity, table){
 		var ctrl = this;
 		
+		FunctionsService.detail = true;
+
 		var master = row.entity;
 	
 		ctrl.gridOptions = DetailService.gridOptions;
@@ -14,9 +16,9 @@
 		DetailService.table = table;
 
 		ctrl.insert = FunctionsService.insert;
-		ctrl.update = FunctionsService.update;
+		ctrl.edit = FunctionsService.edit;
 		ctrl.delete = FunctionsService.delete;
-		
+
 		ctrl.getTableHeight = function() {
 			var rowHeight = 30; // your row height
 			var headerHeight = 30; // your header height
@@ -39,6 +41,13 @@
 				ctrl.gridOptions.columnDefs = result.data.columnDefs;
 				ctrl.gridOptions.data = result.data.data;
 				ctrl.title = result.data.title;
+
+				FunctionsService.htmlTemplateInsertEditDetail = result.data.htmlTemplateInsertEdit;
+				FunctionsService.htmlTemplateDeleteDetail = result.data.htmlTemplateDelete;
+
+				FunctionsService.htmlControllerInsertDetail = result.data.htmlControllerInsert;
+				FunctionsService.htmlControllerEditDetail = result.data.htmlControllerEdit;
+				FunctionsService.htmlControllerDeleteDetail = result.data.htmlControllerDelete;
 
 				DetailService.title = result.data.title;
 				DetailService.simpleTitle = result.data.simpleTitle;
@@ -85,7 +94,7 @@
 			$uibModalInstance.close();
 		};
 	});
-	app.controller('ModalUpdateDetailCtrl',function ($uibModalInstance, grid, row, FunctionsService, DetailService, TRANSACTION_TYPE) {
+	app.controller('ModalEditDetailCtrl',function ($uibModalInstance, grid, row, FunctionsService, DetailService, TRANSACTION_TYPE) {
 		var ctrl = this;
 		
 		ctrl.titleType = "Edição";
@@ -111,11 +120,12 @@
 			$uibModalInstance.close(row.entity);
 		};
 	});
-	app.controller('ModalDeleteDetailCtrl',function ($uibModalInstance, grid, row, DetailService, TRANSACTION_TYPE) {
+	app.controller('ModalDeleteDetailCtrl',function ($uibModalInstance, grid, row, FunctionsService, DetailService, TRANSACTION_TYPE) {
 		var ctrl = this;
 		ctrl.gridOptions = DetailService.gridOptions;
 		ctrl.entity = angular.copy(row.entity);
-		ctrl.displayModalDelete = ctrl.entity[MasterService.displayModalDelete];
+		ctrl.simpleTitle = DetailService.simpleTitle;
+		ctrl.displayModalDelete = ctrl.entity[DetailService.displayModalDelete];
 
 		ctrl.delete = function () {
 			// Copy row values over
@@ -134,5 +144,4 @@
 			$uibModalInstance.close(row.entity);
 		};
 	});
-
 })();

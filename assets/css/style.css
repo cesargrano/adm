@@ -222,7 +222,7 @@
 .grid .form-group .form-control-feedback {
   top: 25px!important;
 }
-.addUser {
+.grid-view {
   -webkit-border-radius: 100%;
   -moz-border-radius: 100%;
   border-radius: 100%;
@@ -239,7 +239,7 @@
   -ms-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
 }
-.addUser:hover {
+.grid-view:hover {
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -ms-transition: all 0.3s ease;

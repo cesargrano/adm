@@ -5,6 +5,7 @@
 	app.service('FunctionsService', function ($http, $state, $window, Session, APP_DATA, AUTH_EVENTS, $uibModal) {
 	
 		var functionsService = this;
+		functionsService.detail = false;
 		
 		functionsService.transaction = function(data, mthd, rest, trt, entity, table, success, error){
 			$http({
@@ -25,17 +26,33 @@
 				error;
 			});
 		};
-		functionsService.insert = function (url, ctrl) {
+		functionsService.insert = function () {
+			var template = functionsService.htmlTemplateInsertEdit;
+			var controller = functionsService.htmlControllerInsert;
+			
+			if (functionsService.detail) {
+				template = functionsService.htmlTemplateInsertEditDetail;
+				controller = functionsService.htmlControllerInsertDetail;
+			}
+			
 			$uibModal.open({
-				templateUrl: url, //'app/infra/users/usersModal.html',
-				controller: ctrl, //'ModalInsertUserCtrl',
+				templateUrl: template,
+				controller: controller,
 				controllerAs: 'ctrl'
 			});
 		};
-		functionsService.update = function (url, ctrl, grid, row) {
+		functionsService.edit = function (grid, row) {
+			var template = functionsService.htmlTemplateInsertEdit;
+			var controller = functionsService.htmlControllerEdit;
+			
+			if (functionsService.detail) {
+				template = functionsService.htmlTemplateInsertEditDetail;
+				controller = functionsService.htmlControllerEditDetail;
+			}
+			
 			$uibModal.open({
-				templateUrl: url, //'app/infra/users/usersModal.html',
-				controller: ctrl, //'ModalUpdateUserCtrl',
+				templateUrl: template,
+				controller: controller,
 				controllerAs: 'ctrl',
 				resolve: {
 					grid: function () { return grid; },
@@ -43,10 +60,18 @@
 				}
 			});
 		};
-		functionsService.delete = function (url, ctrl, grid, row) {
+		functionsService.delete = function (grid, row) {
+			var template = functionsService.htmlTemplateDelete;
+			var controller = functionsService.htmlControllerDelete;
+			
+			if (functionsService.detail) {
+				template = functionsService.htmlTemplateDeleteDetail;
+				controller = functionsService.htmlControllerDeleteDetail;
+			}
+
 			$uibModal.open({
-				templateUrl: url, //'app/views/deleteModal.html',
-				controller: ctrl, //'ModalDeleteUserCtrl',
+				templateUrl: template,
+				controller: controller,
 				controllerAs: 'ctrl',
 				resolve: {
 					grid: function () { return grid; },
@@ -60,10 +85,10 @@
 		};
 		
 		
-		functionsService.openDetail = function (url, ctrl, entity, table, grid, row) {
+		functionsService.openDetail = function (entity, table, grid, row) {
 			$uibModal.open({
-				templateUrl: url, //'app/infra/users/usersEmailModal.html',
-				controller: ctrl, //'UsersEmailCtrl',
+				templateUrl: "app/views/gridViewDetail.html",
+				controller: "DetailCtrl",
 				controllerAs: 'ctrl',
 				resolve: {
 					entity: function () { return entity; },
@@ -71,6 +96,8 @@
 					grid: function () { return grid; },
 					row: function () { return row; }
 				}
+			}).closed.then(function(){
+				functionsService.detail = false;
 			});
 		};
 	});
