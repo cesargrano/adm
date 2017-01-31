@@ -13,7 +13,7 @@
 
 <script type="text/ng-template" id="nodes_renderer.html">
   <div ui-tree-handle class="tree-node tree-node-content">
-    <a class="btn btn-success btn-xs" ng-if="node.SUB_MENU.data && node.SUB_MENU.data.length > 0" data-nodrag ng-click="ctrl.toggle(this)">
+    <a class="btn btn-success btn-xs" ng-if="node.TMP_SUB_MENU.data && node.TMP_SUB_MENU.data.length > 0" data-nodrag ng-click="ctrl.toggle(this)">
 		<span class="glyphicon" ng-class="{
 	    	    'glyphicon-chevron-right': collapsed,
     	    	'glyphicon-chevron-down': !collapsed
@@ -31,8 +31,8 @@
 		<span class="glyphicon glyphicon-edit"></span>
 	</a>
   </div>
-  <ol ui-tree-nodes="" ng-model="node.SUB_MENU.data" ng-class="{hidden: collapsed}">
-    <li ng-repeat="node in node.SUB_MENU.data" ui-tree-node data-collapsed="true" data-expand-on-hover="true" ng-include="'nodes_renderer.html'">
+  <ol ui-tree-nodes="" ng-model="node.TMP_SUB_MENU.data" ng-class="{hidden: collapsed}">
+    <li ng-repeat="node in node.TMP_SUB_MENU.data" ui-tree-node data-collapsed="true" data-expand-on-hover="true" ng-include="'nodes_renderer.html'">
     </li>
   </ol>
 

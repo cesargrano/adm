@@ -8,7 +8,7 @@
         <form name="ctrl.validForm" method="post" novalidate>
         	<div class="form-group has-success has-feedback" ng-class="{'has-error':!ctrl.entity.EMAIL_TYPE}">
 				<label class="control-label" for="EMAIL_TYPE">Tipo E-mail</label>
-				<input ng-model="ctrl.entity.EMAIL_TYPE" type="EMAIL_TYPE" class="form-control" id="EMAIL_TYPE" name="EMAIL_TYPE" aria-describedby="EMAIL_TYPEStatus" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+				<input ng-model="ctrl.entity.EMAIL_TYPE" type="EMAIL_TYPE" class="form-control" id="EMAIL_TYPE" name="EMAIL_TYPE" aria-describedby="EMAIL_TYPEStatus" required>
 				<span class="glyphicon glyphicon-ok form-control-feedback" ng-class="{'glyphicon-remove':!ctrl.entity.EMAIL_TYPE}" aria-hidden="true"></span>
 				<span id="EMAIL_TYPEStatus" class="sr-only">(success)</span>
 			</div>

@@ -8,22 +8,28 @@
         <form name="ctrl.validForm" method="post" novalidate>
         	<div class="form-group has-success has-feedback" ng-class="{'has-error':!ctrl.entity.DESCRIPTION}">
 				<label class="control-label" for="DESCRIPTION">Descrição</label>
-				<input ng-model="ctrl.entity.DESCRIPTION" type="text" class="form-control" id="DESCRIPTION" name="DESCRIPTION" aria-describedby="DESCRIPTIONStatus" required>
+				<input ng-model="ctrl.entity.DESCRIPTION" type="text" class="form-control" id="DESCRIPTION" name="DESCRIPTION" aria-describedby="DESCRIPTIONStatus" required focus-me>
 				<span class="glyphicon glyphicon-ok form-control-feedback" ng-class="{'glyphicon-remove':!ctrl.entity.DESCRIPTION}" aria-hidden="true"></span>
 				<span id="DESCRIPTIONStatus" class="sr-only">(success)</span>
 			</div>
 			<div class="row">
-	        	<div class="form-group has-success has-feedback col-md-6" ng-class="{'has-error':!ctrl.entity.ICON}">
-					<label class="control-label" for="ICON">Icone</label>
-					<input ng-model="ctrl.entity.ICON" type="text" class="form-control" id="ICON" name="ICON" aria-describedby="ICONStatus" required>
-					<span class="glyphicon glyphicon-ok form-control-feedback form-control-feedback-col" ng-class="{'glyphicon-remove':!ctrl.entity.ICON}" aria-hidden="true"></span>
-					<span id="ICONStatus" class="sr-only">(success)</span>
-				</div>
-	        	<div class="form-group has-success has-feedback col-md-6" ng-class="{'has-error':!ctrl.entity.MNEMONICO}">
+				<div class="form-group has-success has-feedback col-md-6">
 					<label class="control-label" for="MNEMONICO">Mnemônico</label>
-					<input ng-model="ctrl.entity.MNEMONICO" type="text" class="form-control" id="MNEMONICO" name="MNEMONICO" aria-describedby="MNEMONICOStatus" required>
-					<span class="glyphicon glyphicon-ok form-control-feedback form-control-feedback-col" ng-class="{'glyphicon-remove':!ctrl.entity.MNEMONICO}" aria-hidden="true"></span>
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-link" aria-hidden="true"></i></span>
+						<input ng-model="ctrl.entity.MNEMONICO" type="text" class="form-control" id="MNEMONICO" aria-describedby="MNEMONICOStatus">
+					</div>
+					<span class="glyphicon glyphicon-ok form-control-feedback form-control-feedback-col" aria-hidden="true"></span>
 					<span id="MNEMONICOStatus" class="sr-only">(success)</span>
+				</div>
+				<div class="form-group has-success has-feedback col-md-6">
+					<label class="control-label" for="ICON">Icone</label>
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-font-awesome" aria-hidden="true"></i></span>
+						<input ng-model="ctrl.entity.ICON" type="text" class="form-control" id="ICON" aria-describedby="ICONStatus">
+					</div>
+					<span class="glyphicon glyphicon-ok form-control-feedback form-control-feedback-col" aria-hidden="true"></span>
+					<span id="ICONStatus" class="sr-only">(success)</span>
 				</div>
 			</div>
 			<div class="row">
@@ -44,7 +50,7 @@
         </form>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-success" ng-click="ctrl.save(grid, row)" ng-disable="ctrl.validForm.$valid" ng-if="ctrl.entity.DESCRIPTION && ctrl.entity.ICON && ctrl.entity.MNEMONICO && ctrl.entity.PRESENTATION_ORDER">Gravar</button>
+        <button class="btn btn-success" ng-click="ctrl.save(grid, row)" ng-disable="ctrl.validForm.$valid" ng-if="ctrl.entity.DESCRIPTION && ctrl.entity.PRESENTATION_ORDER">Gravar</button>
         <button class="btn btn-warning" ng-click="$close()">Cancelar</button>
     </div>
 </div>

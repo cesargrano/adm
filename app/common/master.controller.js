@@ -36,7 +36,7 @@
 		ctrl.read = function () {
 			ctrl.error = false;
 			var trt = TRANSACTION_TYPE.read;
-			FunctionsService.transaction(null, 'GET', 'table', trt, $state.current.data.entity, $state.current.data.table, function(result){
+			FunctionsService.transaction(null, 'GET', 'table', trt, $state.current.data.entity, $state.current.data.table, FunctionsService.debug, function(result){
 				ctrl.gridOptions.columnDefs = result.data.columnDefs;
 				ctrl.gridOptions.data = result.data.data;
 				ctrl.title = result.data.title;
@@ -56,9 +56,8 @@
 				if (result.data.insertBuffer != undefined)
 					MasterService.insertBuffer = result.data.insertBuffer.data[0];
 				
-			}, function(err){
-				//do something if Error();
-				console.log(err);
+			}, function(error){
+				FunctionsService.message(error, 'fa-exclamation-triangle');
 			});
 		};
 		return ctrl.read();
@@ -76,13 +75,12 @@
 		ctrl.selectOnChange = FunctionsService.selectOnChange;
 		ctrl.save = function () {
 			var trt = TRANSACTION_TYPE.insert;
-			FunctionsService.transaction(ctrl.entity, 'POST', 'save', trt, MasterService.entity, MasterService.table, function(result){
+			FunctionsService.transaction(ctrl.entity, 'POST', 'save', trt, MasterService.entity, MasterService.table, FunctionsService.debug, function(result){
 				//Success();
-				console.log(result.data.data[0]);
+				console.log("master: ", result.data.data[0]);
 				ctrl.gridOptions.data.push(result.data.data[0]);
-			}, function(err){
-				//do something if Error();
-				console.log(err);
+			}, function(error){
+				FunctionsService.message(error, 'fa-exclamation-triangle');
 			});
 			$uibModalInstance.close();
 		};
@@ -103,12 +101,11 @@
 			row.entity = angular.extend(row.entity, ctrl.entity);
 			var trt = TRANSACTION_TYPE.update;
 			var entity = row.entity;
-			FunctionsService.transaction(entity, 'POST', 'save', trt, MasterService.entity, MasterService.table, function(result){
+			FunctionsService.transaction(entity, 'POST', 'save', trt, MasterService.entity, MasterService.table, FunctionsService.debug, function(result){
 				//Success();
 				//console.log(result);
-			}, function(err){
-				//do something if Error();
-				console.log(err);
+			}, function(error){
+				FunctionsService.message(error, 'fa-exclamation-triangle');
 			});
 			$uibModalInstance.close(row.entity);
 		};
@@ -125,14 +122,13 @@
 			row.entity = angular.extend(row.entity, ctrl.entity);
 			var trt = TRANSACTION_TYPE.delete;
 			var data = row.entity;
-			FunctionsService.transaction(data, 'POST', 'save', trt, MasterService.entity, MasterService.table, function(result){
+			FunctionsService.transaction(data, 'POST', 'save', trt, MasterService.entity, MasterService.table, FunctionsService.debug, function(result){
 				//Success();
 				var index = ctrl.gridOptions.data.indexOf(row.entity);
 				//console.log(index);
 				ctrl.gridOptions.data.splice(index, 1);
-			}, function(err){
-				//do something if Error();
-				console.log(err);
+			}, function(error){
+				FunctionsService.message(error, 'fa-exclamation-triangle');
 			});
 			$uibModalInstance.close(row.entity);
 		};

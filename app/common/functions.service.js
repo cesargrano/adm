@@ -6,8 +6,9 @@
 	
 		var functionsService = this;
 		functionsService.detail = false;
-		
-		functionsService.transaction = function(data, mthd, rest, trt, entity, table, success, error){
+		functionsService.debug = false;
+
+		functionsService.transaction = function(data, mthd, rest, trt, entity, table, debug, success, error){
 			$http({
 				method: mthd,
 				url: APP_DATA.serverPath+rest,
@@ -16,15 +17,15 @@
 					entity: entity,
 					tb: table,
 					trt: trt,
+					debug: debug,
 					data: data
 				},
 				data: data
 			}).then(function successCallback(response){
 				success(response);
-				//console.log(response);
-			}, function errorCallback(error){
-				error;
-			});
+			}).catch(function (response) {
+				error(response);
+		    });
 		};
 		functionsService.insert = function () {
 			var template = functionsService.htmlTemplateInsertEdit;
@@ -79,7 +80,17 @@
 				}
 			});
 		};
-		
+		functionsService.message = function (msg, icon) {
+			$uibModal.open({
+				templateUrl: 'app/views/messageModal.html',
+				controller: 'ModalMessageCtrl',
+				controllerAs: 'ctrl',
+				resolve: {
+					msg: function () { return msg; },
+					icon: function () { return icon; }
+				}
+			});
+		};
 		functionsService.selectOnChange = function(item, display, entity, field) {
 			entity[field] = item[display];
 		};

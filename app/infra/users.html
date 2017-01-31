@@ -8,7 +8,7 @@
         <form name="ctrl.validForm" method="post" novalidate>
 			<div class="form-group has-success has-feedback" ng-class="{'has-error':!ctrl.entity.ID_GROUP_USER}">
 				<label class="control-label" for="ID_GROUP_USER">Grupo</label>
-				<ui-select ng-model="ctrl.entity.ID_GROUP_USER" theme="select2" on-select="ctrl.selectOnChange($item, 'DESCRIPTION', ctrl.entity, 'TMP_GROUP_USER')">
+				<ui-select ng-model="ctrl.entity.ID_GROUP_USER" theme="select2" on-select="ctrl.selectOnChange($item, 'DESCRIPTION', ctrl.entity, 'TMP_GROUP_USER')" focus-me>
 					<ui-select-match placeholder="Selecione Grupo">{{$select.selected.DESCRIPTION}}</ui-select-match>
 					<ui-select-choices repeat="item.ID_GROUP_USER as item in ctrl.selectBuffers['GROUP_USER'].data | filter: $select.search">
 						<div ng-bind-html="item.DESCRIPTION | highlight: $select.search"></div>

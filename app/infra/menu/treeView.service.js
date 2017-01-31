@@ -4,7 +4,7 @@
 
 	app.service('TreeViewService', function ($uibModal) {
 		var treeViewService = this;
-				
+
 		treeViewService.insert = function (node) {
 			$uibModal.open({
 				templateUrl: 'app/infra/menu/menuTreViewModal.html',
@@ -15,10 +15,10 @@
 				}
 			});
 		};
-		treeViewService.update = function (node) {
+		treeViewService.edit = function (node) {
 			$uibModal.open({
 				templateUrl: 'app/infra/menu/menuTreViewModal.html',
-				controller: 'ModalUpdateTreeViewCtrl',
+				controller: 'ModalEditTreeViewCtrl',
 				controllerAs: 'ctrl',
 				resolve: {
 					node: function () { return node; }

@@ -8,7 +8,7 @@
         <form name="ctrl.validForm" method="post" novalidate>
         	<div class="form-group has-success has-feedback" ng-class="{'has-error':!ctrl.entity.DESCRIPTION}">
 				<label class="control-label" for="DESCRIPTION">Descrição</label>
-				<input ng-model="ctrl.entity.DESCRIPTION" type="text" class="form-control" id="DESCRIPTION" name="DESCRIPTION" aria-describedby="DESCRIPTIONStatus" required>
+				<input ng-model="ctrl.entity.DESCRIPTION" type="text" class="form-control" id="DESCRIPTION" name="DESCRIPTION" aria-describedby="DESCRIPTIONStatus" required focus-me>
 				<span class="glyphicon glyphicon-ok form-control-feedback" ng-class="{'glyphicon-remove':!ctrl.entity.DESCRIPTION}" aria-hidden="true"></span>
 				<span id="DESCRIPTIONStatus" class="sr-only">(success)</span>
 			</div>
