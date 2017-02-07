@@ -1,0 +1,7 @@
+<div class="btn-group grid-btn-groug" ng-model="ctrl.toolBar">
+	<button ng-repeat="btn in ctrl.toolBar" type="button" class="btn btn-sm {{btn.class}} grid-btn-groug-rotate" 
+		aria-label="Left Align" ng-click="ctrl.executeString(btn.click)" ng-if="btn.visible"
+		data-toggle="tooltip" title="{{btn.title}}">
+		<span class="glyphicon {{btn.icon}}" aria-hidden="true"></span>
+	</button>
+</div>

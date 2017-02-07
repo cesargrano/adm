@@ -13,24 +13,19 @@
 .grid .form-group .form-control-feedback {
   top: 25px!important;
 }
-.grid-view {
-  -webkit-border-radius: 100%;
-  -moz-border-radius: 100%;
-  border-radius: 100%;
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
-  position: absolute;
+.grid-btn-groug-rotate {
+  /*.border-radius(100%);*/
+  /*	position: absolute;*/
   z-index: 5;
-  padding: 10px 12px;
-  display: block;
-  background: rgba(0, 0, 0, 0);
+  /* 	padding: 10px 12px;*/
+  /*	display: block;*/
+  /*	background: rgba(0,0,0,0);*/
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -ms-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
 }
-.grid-view:hover {
+.grid-btn-groug-rotate:hover {
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -ms-transition: all 0.3s ease;
@@ -41,4 +36,11 @@
   -moz-transform: scale(1.4) rotate(360deg);
   -ms-transform: scale(1.4) rotate(360deg);
   -o-transform: scale(1.4) rotate(360deg);
+}
+.grid-btn-groug {
+  float: right !important;
+  margin-right: -5px;
+}
+.ui-grid-pager-panel {
+  border-top: 1px solid #d4d4d4;
 }

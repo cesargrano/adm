@@ -5,8 +5,8 @@
 	app.service('FunctionsService', function ($http, $state, $window, Session, APP_DATA, AUTH_EVENTS, $uibModal) {
 	
 		var functionsService = this;
-		functionsService.detail = false;
 		functionsService.debug = false;
+		functionsService.detail = false;
 
 		functionsService.transaction = function(data, mthd, rest, trt, entity, table, debug, success, error){
 			$http({
@@ -42,26 +42,29 @@
 				controllerAs: 'ctrl'
 			});
 		};
-		functionsService.edit = function (grid, row) {
+		functionsService.edit = function (row) {
 			var template = functionsService.htmlTemplateInsertEdit;
 			var controller = functionsService.htmlControllerEdit;
-			
+
 			if (functionsService.detail) {
 				template = functionsService.htmlTemplateInsertEditDetail;
 				controller = functionsService.htmlControllerEditDetail;
 			}
-			
-			$uibModal.open({
-				templateUrl: template,
-				controller: controller,
-				controllerAs: 'ctrl',
-				resolve: {
-					grid: function () { return grid; },
-					row: function () { return row; }
-				}
-			});
+
+			if (row.length == 0)
+				functionsService.message('Por favor Selecione a linha para Edição', 'glyphicon-warning-sign');
+			else {
+				$uibModal.open({
+					templateUrl: template,
+					controller: controller,
+					controllerAs: 'ctrl',
+					resolve: {
+						row: function () { return row; }
+					}
+				});
+			}
 		};
-		functionsService.delete = function (grid, row) {
+		functionsService.delete = function (row) {
 			var template = functionsService.htmlTemplateDelete;
 			var controller = functionsService.htmlControllerDelete;
 			
@@ -70,15 +73,18 @@
 				controller = functionsService.htmlControllerDeleteDetail;
 			}
 
-			$uibModal.open({
-				templateUrl: template,
-				controller: controller,
-				controllerAs: 'ctrl',
-				resolve: {
-					grid: function () { return grid; },
-					row: function () { return row; }
-				}
-			});
+			if (row.length == 0)
+				functionsService.message('Por favor Selecione a linha para Deleção', 'glyphicon-warning-sign');
+			else {
+				$uibModal.open({
+					templateUrl: template,
+					controller: controller,
+					controllerAs: 'ctrl',
+					resolve: {
+						row: function () { return row; }
+					}
+				});
+			}
 		};
 		functionsService.message = function (msg, icon) {
 			$uibModal.open({
@@ -101,6 +107,7 @@
 				templateUrl: "app/views/gridViewDetail.html",
 				controller: "DetailCtrl",
 				controllerAs: 'ctrl',
+				size: 'lg',
 				resolve: {
 					entity: function () { return entity; },
 					table: function () { return table; },
@@ -111,5 +118,17 @@
 				functionsService.detail = false;
 			});
 		};
+	});
+	app.controller('ModalMessageCtrl',function ($uibModalInstance, msg, icon) {
+		var ctrl = this;
+		var messagem = "";
+
+		if (msg instanceof Object)
+			messagem = msg.status + '() ' + msg.data;
+		else
+			messagem = msg
+		
+		ctrl.msg = messagem; 
+		ctrl.icon = icon;
 	});
 })();

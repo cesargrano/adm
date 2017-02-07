@@ -1,0 +1,20 @@
+<div class="btn-group grid-btn-groug">
+	<button type="button" class="btn btn-sm btn-primary grid-btn-groug-rotate" aria-label="Left Align" ng-click="ctrl.insert()" ng-if="ctrl.toolBar.btnInsert.visible">
+		<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+	</button>
+	<button type="button" class="btn btn-sm btn-info grid-btn-groug-rotate" aria-label="Left Align" ng-click="ctrl.edit(ctrl.gridApi.selection.getSelectedRows())" ng-if="ctrl.toolBar.btnEdit.visible">
+		<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+	</button>
+	<button type="button" class="btn btn-sm btn-danger grid-btn-groug-rotate" aria-label="Left Align" ng-click="ctrl.delete(ctrl.gridApi.selection.getSelectedRows())" ng-if="ctrl.toolBar.btnDelete.visible">
+		<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+	</button>
+	<button type="button" class="btn btn-sm btn-success grid-btn-groug-rotate" aria-label="Left Align" ng-click="ctrl.read()" ng-if="ctrl.toolBar.btnRefresh.visible">
+		<span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+	</button>
+	<button type="button" class="btn btn-sm btn-info grid-btn-groug-rotate" aria-label="Left Align" ng-if="ctrl.toolBar.btnPrint.visible">
+		<span class="glyphicon glyphicon-print" aria-hidden="true"></span>
+	</button>
+	<button type="button" class="btn btn-sm btn-info grid-btn-groug-rotate" aria-label="Left Align" ng-if="ctrl.toolBar.btnFilter.visible">
+		<span class="glyphicon glyphicon-filter" aria-hidden="true"></span>
+	</button>
+</div>

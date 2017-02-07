@@ -8,7 +8,7 @@
 		FunctionsService.detail = true;
 
 		var master = row.entity;
-	
+
 		ctrl.gridOptions = DetailService.gridOptions;
 		ctrl.gridOptions.data = null;
 
@@ -19,12 +19,16 @@
 		ctrl.edit = FunctionsService.edit;
 		ctrl.delete = FunctionsService.delete;
 
+		ctrl.executeString = function(body){
+			  eval(body);
+		};
+			
 		ctrl.getTableHeight = function() {
 			var rowHeight = 30; // your row height
 			var headerHeight = 30; // your header height
 			
 			var heightWindow = angular.element($window)[0].innerHeight - 117;
-			var heightGrid = (ctrl.gridOptions.data.length + 3.05) * 30;
+			var heightGrid = (ctrl.gridOptions.data.length + 2.12) * 30;
 			
 			if (heightGrid > heightWindow)
 				heightGrid = heightWindow
@@ -33,14 +37,15 @@
 				height: heightGrid + "px" 
 			};
 		};
-	
+
 		ctrl.read = function () {
 			ctrl.error = false;
-			var trt = TRANSACTION_TYPE.read;
-			FunctionsService.transaction(master, 'GET', 'table', trt, entity, table, function(result){
+			ctrl.gridOptions.data = {};
+			FunctionsService.transaction(master, 'GET', 'table', TRANSACTION_TYPE.read, entity, table, FunctionsService.debug, function(result){
 				ctrl.gridOptions.columnDefs = result.data.columnDefs;
 				ctrl.gridOptions.data = result.data.data;
 				ctrl.title = result.data.title;
+				ctrl.toolBar = result.data.toolBar;
 
 				FunctionsService.htmlTemplateInsertEditDetail = result.data.htmlTemplateInsertEdit;
 				FunctionsService.htmlTemplateDeleteDetail = result.data.htmlTemplateDelete;
@@ -59,9 +64,10 @@
 				if (result.data.insertBuffer != undefined)
 					DetailService.insertBuffer = result.data.insertBuffer.data[0];
 				
-			}, function(err){
-				//do something if Error();
-				console.log(err);
+				ctrl.gridApi = DetailService.gridApi;
+
+			}, function(error){
+				FunctionsService.message(error, 'glyphicon-warning-sign');
 			});
 
 		};
@@ -81,20 +87,17 @@
 
 		ctrl.selectOnChange = FunctionsService.selectOnChange;
 		ctrl.save = function () {
-			var trt = TRANSACTION_TYPE.insert;
-
-			FunctionsService.transaction(ctrl.entity, 'POST', 'save', trt, DetailService.entity, DetailService.table, function(result){
+			FunctionsService.transaction(ctrl.entity, 'POST', 'save', TRANSACTION_TYPE.insert, DetailService.entity, DetailService.table, FunctionsService.debug, function(result){
 				//Success();
 				console.log(result.data.data[0]);
 				ctrl.gridOptions.data.push(result.data.data[0]);
-			}, function(err){
-				//do something if Error();
-				console.log(err);
+			}, function(error){
+				FunctionsService.message(error, 'glyphicon-warning-sign');
 			});
 			$uibModalInstance.close();
 		};
 	});
-	app.controller('ModalEditDetailCtrl',function ($uibModalInstance, grid, row, FunctionsService, DetailService, TRANSACTION_TYPE) {
+	app.controller('ModalEditDetailCtrl',function ($uibModalInstance, row, FunctionsService, DetailService, TRANSACTION_TYPE) {
 		var ctrl = this;
 		
 		ctrl.titleType = "Edição";
@@ -102,46 +105,40 @@
 		ctrl.selectBuffers = DetailService.selectBuffers;
 
 		ctrl.gridOptions = DetailService.gridOptions;
-		ctrl.entity = angular.copy(row.entity);
+		ctrl.entity = angular.copy(row[0]);
 		
 		ctrl.selectOnChange = FunctionsService.selectOnChange;
 		ctrl.save = function () {
 			// Copy row values over
-			row.entity = angular.extend(row.entity, ctrl.entity);
-			var trt = TRANSACTION_TYPE.update;
-			var entity = row.entity;
-			FunctionsService.transaction(entity, 'POST', 'save', trt, DetailService.entity, DetailService.table, function(result){
+			row[0] = angular.extend(row[0], ctrl.entity);
+			FunctionsService.transaction(row[0], 'POST', 'save', TRANSACTION_TYPE.update, DetailService.entity, DetailService.table, FunctionsService.debug, function(result){
 				//Success();
 				//console.log(result);
-			}, function(err){
-				//do something if Error();
-				console.log(err);
+			}, function(error){
+				FunctionsService.message(error, 'glyphicon-warning-sign');
 			});
-			$uibModalInstance.close(row.entity);
+			$uibModalInstance.close(row[0]);
 		};
 	});
-	app.controller('ModalDeleteDetailCtrl',function ($uibModalInstance, grid, row, FunctionsService, DetailService, TRANSACTION_TYPE) {
+	app.controller('ModalDeleteDetailCtrl',function ($uibModalInstance, row, FunctionsService, DetailService, TRANSACTION_TYPE) {
 		var ctrl = this;
 		ctrl.gridOptions = DetailService.gridOptions;
-		ctrl.entity = angular.copy(row.entity);
+		ctrl.entity = angular.copy(row[0]);
 		ctrl.simpleTitle = DetailService.simpleTitle;
 		ctrl.displayModalDelete = ctrl.entity[DetailService.displayModalDelete];
 
 		ctrl.delete = function () {
 			// Copy row values over
-			row.entity = angular.extend(row.entity, ctrl.entity);
-			var trt = TRANSACTION_TYPE.delete;
-			var data = row.entity;
-			FunctionsService.transaction(data, 'POST', 'save', trt, DetailService.entity, DetailService.table, function(result){
+			row[0] = angular.extend(row[0], ctrl.entity);
+			FunctionsService.transaction(row[0], 'POST', 'save', TRANSACTION_TYPE.delete, DetailService.entity, DetailService.table, FunctionsService.debug, function(result){
 				//Success();
-				var index = ctrl.gridOptions.data.indexOf(row.entity);
+				var index = ctrl.gridOptions.data.indexOf(row[0]);
 				//console.log(index);
 				ctrl.gridOptions.data.splice(index, 1);
-			}, function(err){
-				//do something if Error();
-				console.log(err);
+			}, function(error){
+				FunctionsService.message(error, 'glyphicon-warning-sign');
 			});
-			$uibModalInstance.close(row.entity);
+			$uibModalInstance.close(row[0]);
 		};
 	});
 })();

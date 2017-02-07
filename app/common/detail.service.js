@@ -10,8 +10,9 @@
 			enableColumnMenus: false,
 			paginationPageSize: 15,
 			enableRowSelection: true,
-			enableRowHeaderSelection: false,
+			enableRowHeaderSelection: true,
 			multiSelect: false,
+			selectionRowHeaderWidth: 30,
 			onRegisterApi: function (gridApi, registerGridApi){
 				detailService.gridApi = gridApi;
 				detailService.registerGridApi = registerGridApi;

@@ -1,9 +1,24 @@
 <div ng-controller="MasterCtrl as ctrl">
-	<h1 class="page-header">{{ctrl.title}}</h1>
-    <div class="grid-view" ng-click="ctrl.insert()">
+	<div class="row">
+		<div class="col-md-8 ">
+			<h1 class="page-header-title">{{ctrl.title}}</h1>
+		</div>
+		<div class="col-md-4 btn-toolbar" role="toolbar" ng-include="'app/views/gridToolBar.html'">
+		</div>
+	</div>
+	<h1 class="page-header-line"></h1>
+	<!-- 
+    <div class="grid-btn-groug-rotate" ng-click="ctrl.insert()">
         <i class="fa fa-plus ui-grid-link" aria-hidden="true"></i>
     </div>
+     -->
     <div id="gridMaster" ui-grid="ctrl.gridOptions" class="grid" 
     	ui-grid-pagination ui-grid-selection ui-grid-auto-resize 
     	ng-style="ctrl.getTableHeight()"></div>
 </div>
+
+<script>
+	$(document).ready(function(){
+	    $('[data-toggle="tooltip"]').tooltip();   
+	});
+</script>

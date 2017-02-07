@@ -4,11 +4,11 @@
 	<div data-ui-tree="treeOptions" id="tree-root">
 		<ol ui-tree-nodes="" ng-model="ctrl.data">
 	    	<li class="item">
-            	<a><toggle-nav></toggle-nav></a>
+            	<a data-toggle="tooltip" title="Menu"><toggle-nav></toggle-nav></a>
         	</li>
         	<li>
         		<a class="item" ui-sref="dashboard">
-	        		<i class="fa fa-tachometer"></i>
+	        		<i class="fa fa-tachometer" data-toggle="tooltip" title="Dashboard"></i>
 	        		<span class="desc ng-binding" ng-hide="ctrl.toggleNav.status">Dashboard</span>
         		</a>
         	</li> 
@@ -24,7 +24,7 @@
 			ng-init="ctrl.node.collapse[$index] = true"
 			ng-click="ctrl.toggle(this)"
 			ng-class="{'dropdown-toggle': node.SUB_MENU}"> 
-			<i class="fa" ng-class="node.ICON"></i> 
+			<i class="fa" ng-class="node.ICON" data-toggle="tooltip" title="{{node.DESCRIPTION}}"></i> 
 			<span class="desc" ng-hide="ctrl.toggleNav.status">{{node.DESCRIPTION}}
 				<span class="glyphicon" ng-if="node.SUB_MENU.data && node.SUB_MENU.data.length > 0" 
 					ng-class="{
@@ -39,4 +39,10 @@
     	<li ng-repeat="node in node.SUB_MENU.data" ui-tree-node data-collapsed="false" data-expand-on-hover="false" ng-include="'nodes_renderer.html'">
     	</li>
   	</ol>
+</script>
+
+<script>
+	$(document).ready(function(){
+	    $('[data-toggle="tooltip"]').tooltip();   
+	});
 </script>

@@ -30,8 +30,7 @@
 					nodeData = angular.extend(nodeData, entity);
 					return true;
 				}, function(error){
-					//do something if Error();
-					console.log("error: ", error);
+					FunctionsService.message(error, 'glyphicon-warning-sign');
 					return false;
 				});
 			}
@@ -66,7 +65,7 @@
 				TreeViewService.insertBuffer = result.data.insertBuffer.data[0];
 
 			}, function(error){
-				FunctionsService.message(error, 'fa-exclamation-triangle');
+				FunctionsService.message(error, 'glyphicon-warning-sign');
 			});
 		};
 		return ctrl.read();
@@ -89,7 +88,7 @@
 				//console.log("save: ", result.data.data[0]);
 				nodeData.TMP_SUB_MENU.data.push(result.data.data[0]);
 			}, function(error){
-				FunctionsService.message(error, 'fa-exclamation-triangle');
+				FunctionsService.message(error, 'glyphicon-warning-sign');
 			});
 			$uibModalInstance.close();
 		};
@@ -114,7 +113,7 @@
 				//console.log(result);
 				nodeData = angular.extend(nodeData, ctrl.entity);
 			}, function(error){
-				FunctionsService.message(error, 'fa-exclamation-triangle');
+				FunctionsService.message(error, 'glyphicon-warning-sign');
 			});
 			$uibModalInstance.close(nodeData);
 		};
@@ -132,14 +131,9 @@
 				//Success();
 				node.remove(nodeData);
 			}, function(error){
-				FunctionsService.message(error, 'fa-exclamation-triangle');
+				FunctionsService.message(error, 'glyphicon-warning-sign');
 			});
 			$uibModalInstance.close(nodeData);
 		};
-	});
-	app.controller('ModalMessageCtrl',function ($uibModalInstance, msg, icon) {
-		var ctrl = this;
-		ctrl.msg = msg.status + '() ' + msg.data;
-		ctrl.icon = icon;
 	});
 })();
